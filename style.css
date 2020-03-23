@@ -11,6 +11,13 @@ h1:hover:first-child,h1:hover:last-child{
 }
 
 img{
+    float:left;
+    height:600px;
+    width: 500px;
+}
+
+
+.img1{
     float:right;
 }
 
