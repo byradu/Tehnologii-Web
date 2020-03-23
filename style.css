@@ -3,6 +3,7 @@ h1{
 }
 
 h1:hover:first-child,h1:hover:last-child{
+    
     transform: scale(2);
 }
 
