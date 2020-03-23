@@ -1,0 +1,13 @@
+h1{
+    border:10px dashed pink;
+}
+
+h1:hover:first-child,h1:hover:last-child{
+    transform: scale(2);
+}
+
+body{
+    background-image: url(https://images2.alphacoders.com/697/thumb-1920-697790.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
