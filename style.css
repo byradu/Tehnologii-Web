@@ -2,6 +2,7 @@ body{
     background-image: url(https://wallpaperaccess.com/full/109538.jpg);
     background-size: cover;
     background-attachment: fixed;
+    
     position: relative;
     height: 100vh;
 }
@@ -31,14 +32,10 @@ nav{
   }
   footer{
       color:gray;
-      padding:1%;
       position:relative;
-      display: block;
-      justify-content:space-around;
-      align-items: flex-end;
-  }
-  span{
       display: flex;
-      justify-content: flex-end;
-      color: gray;
+      justify-content: space-between;
+      align-items: flex-end;
+      bottom: 5%;
   }
+  
