@@ -10,10 +10,10 @@ body{
 nav{
     height:95%;
     color:white;
-    position:absolute;
     display:inline-flex;
     align-items:center;
     justify-content:center;
+    position: absolute;
     
   }
   main{
@@ -27,6 +27,8 @@ background: linear-gradient(90deg, rgba(0,9,242,1) 0%, rgba(116,18,144,1) 14%, r
    display: flex;
    justify-content: center;
    align-items: center;
+   left: 6.9%;
+   margin-right: 6.9%;
    
   }
   @keyframes rainbow{
