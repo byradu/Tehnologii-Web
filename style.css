@@ -1,56 +1,76 @@
-body{
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
     background-image: url(https://wallpaperaccess.com/full/109538.jpg);
     background-size: cover;
     background-attachment: fixed;
-    
     position: relative;
     height: 95vh;
 }
 
-nav{
-    height:95%;
-    color:white;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+nav {
+    height: 95%;
+    top: 2vh;
+    color: white;
+    display: inline-flex;
+    align-items: center;
     position: absolute;
-    
-  }
-  main{
-   font-size: 150%;
-background: linear-gradient(90deg, rgba(0,9,242,1) 0%, rgba(116,18,144,1) 14%, rgba(253,29,29,1) 28%, rgba(252,210,69,1) 42%, rgba(73,252,69,1) 57%, rgba(69,248,252,1) 72%, rgba(0,9,242,1) 100%);
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+
+main {
+    font-size: 150%;
+    background: linear-gradient(90deg, rgba(0, 9, 242, 1) 0%, rgba(116, 18, 144, 1) 14%, rgba(253, 29, 29, 1) 28%, rgba(252, 210, 69, 1) 42%, rgba(73, 252, 69, 1) 57%, rgba(69, 248, 252, 1) 72%, rgba(0, 9, 242, 1) 100%);
     animation: rainbow 50s linear infinite forwards;
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
-   position: relative;
-   height: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   left: 6.9%;
-   margin-right: 6.9%;
-   
-  }
-  @keyframes rainbow{
-      0%{
-          background-position-x: 0%;
-      }
-      100%{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    letter-spacing: 2px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 6.9%;
+    margin-right: 6.9%;
+
+}
+
+@keyframes rainbow {
+    0% {
+        background-position-x: 0%;
+    }
+
+    100% {
         background-position-x: 600vw;
     }
-  }
-  ul{
-      list-style: none;
-  }
-  li{
-      padding: 0.8em;
-  }
-  footer{
-      color:gray;
-      position:relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      
-  }
-  
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding: 2em;
+}
+
+footer {
+    color: gray;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
