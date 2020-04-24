@@ -41,6 +41,7 @@ a:hover {
 
 .flex-nav ul {
     border: 1px solid black;
+    border-top: 1px solid transparent;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -56,7 +57,7 @@ a:hover {
 main {
     font-size: 150%;
     background: linear-gradient(90deg, rgba(0, 9, 242, 1) 0%, rgba(116, 18, 144, 1) 14%, rgba(253, 29, 29, 1) 28%, rgba(252, 210, 69, 1) 42%, rgba(73, 252, 69, 1) 57%, rgba(69, 248, 252, 1) 72%, rgba(0, 9, 242, 1) 100%);
-    animation: rainbow 50s linear infinite forwards;
+    animation: rainbow 100s linear infinite forwards;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 2px;
