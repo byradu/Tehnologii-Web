@@ -73,8 +73,8 @@ body {
 .go-home {
     height: 20vh;
     width: 10vw;
-    margin-top: 15vh;
-    margin-left: 2vw;
+    margin-top: 10vh;
+    margin-left: 3vw;
 }
 
 .go-home a {
@@ -96,5 +96,11 @@ body {
 @media screen and (max-width:600px) and (min-width:300px) {
     .go-home {
         margin-left: 10vw;
+    }
+}
+
+@media screen and(min-height:1100px) and (max-height:1372px){
+    .go-home{
+        margin-top: 10vh;
     }
 }

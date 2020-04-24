@@ -1,6 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 body {
@@ -8,28 +13,44 @@ body {
     background-size: cover;
     background-attachment: fixed;
     position: relative;
-    height: 95vh;
+    margin: 0;
 }
-
-nav {
-    height: 95%;
-    top: 2vh;
-    color: white;
-    display: inline-flex;
-    align-items: center;
-    position: absolute;
-}
-
-
 
 a {
+    color: white;
+    font-weight: 100;
+    letter-spacing: 2px;
     text-decoration: none;
-    color:white;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px 5px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    transition: all 0.5s;
 }
 
 a:hover {
-    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
 }
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.flex-nav ul {
+    border: 1px solid black;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.flex-nav li {
+    flex: 3;
+}
+
 
 
 main {
@@ -38,16 +59,13 @@ main {
     animation: rainbow 50s linear infinite forwards;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    position: relative;
     letter-spacing: 2px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 6.9%;
-    margin-right: 6.9%;
-
+    position: relative;
+    margin-left: 35vw;
+    margin-top: 30vh;
+    display:inline-flex;
 }
+
 
 @keyframes rainbow {
     0% {
@@ -59,19 +77,44 @@ main {
     }
 }
 
-ul {
-    list-style: none;
-}
 
-li {
-    padding: 1.5em;
-}
 
 footer {
     color: gray;
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    margin-left: 0vw;
+    margin-top: 49vh;
+}
 
+@media all and (max-width:1000px) {
+
+    .flex-nav ul {
+        flex-wrap: wrap;
+    }
+
+    .flex-nav li {
+        flex: 1 1 50%;
+    }
+
+}
+
+@media all and (max-width:500px) {
+    .flex-nav li {
+        flex-basis: 100%;
+    }
+}
+
+@media screen and (max-width:900px){
+    main{
+        margin-left: 20vw;
+    }
+}
+
+@media screen and(min-width:300px) and (max-width:700){
+    main{
+        font-size: 50%;
+        margin-left:0vw;
+    }
 }
