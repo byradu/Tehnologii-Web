@@ -15,13 +15,13 @@
     <nav class="flex-nav">
         <ul>
             <li>
-                <a href="Login/login.html">Login</a>
+                <a href="Login/login.php">Login</a>
             </li>
             <li>
-                <a href="Register/register.html">Register</a>
+                <a href="Register/register.php">Register</a>
             </li>
             <li>
-                <a href="Gallery/gallery.html">Gallery</a>
+                <a href="Gallery/gallery.php">Gallery</a>
             </li>
             <li>
                 <a href="https://github.com/byradu/Tehnologii-Web"><i class="fa fa-github"></i></a>
