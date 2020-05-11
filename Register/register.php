@@ -10,9 +10,9 @@
 
 <body>
     <div class="go-home">
-        <a href="../index.php">Home</a>
+        <a href="../index.html">Home</a>
     </div>
-    <form action="test.php" method="POST">
+    <form action="../Includes/register.inc.php" method="POST">
         <div class="login-box">
             <h1>Sign in</h1>
             <div class="textbox">
@@ -37,8 +37,8 @@
 
                 <input type="password" placeholder="Confirm Password" name="con-password" value="">
             </div>
-            
-            <input class="btn" type="submit" name="btn" value="Sign In">
+
+            <input class="btn" type="submit" name="submit" value="Sign In">
             <!-- posibil ca trebuie sa punem name="" la fiecare tag input -->
         </div>
     </form>
