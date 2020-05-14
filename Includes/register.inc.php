@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         header("Location: ../Register/register.php?error=invalidusername&email=" . $email);
         exit();
     } else if ($pass !== $verify_pass) {
-        header("Location: ../Register/register.php?error=passowrdsdoesntmatch&username=" . $username . "&emai=" . $email);
+        header("Location: ../Register/register.php?error=passwordsdontmatch&username=" . $username . "&emai=" . $email);
         exit();
     } else {
         $sql = "SELECT username FROM USERS WHERE username =?"; //necesar pentru ca userul sa nu poata introduce sql in campul username
@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
                     $hashedpassword = password_hash($pass, PASSWORD_DEFAULT); //o criptare corespunzatoare
                     mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedpassword);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../Register/register.php?signup=succes");
+                    header("Location: ../Register/register.php?signup=success");
                     exit();
                 }
             }

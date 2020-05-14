@@ -40,7 +40,7 @@ session_start();
     </nav>
     <main>
         <p style="text-align: center">
-            Welcome to Numismatic Artefact Explore, 
+            Welcome to Numismatic Artefact Explorer, 
             <?php 
                 echo '<br>' .  $_SESSION['username'] . ' !';
             ?>

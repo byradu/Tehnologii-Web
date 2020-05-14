@@ -29,10 +29,9 @@ if (isset($_POST['submit'])) {
                 } else if ($passCheck == true) { //ca sa fim singuri sa nu apara ceva random
                     session_start(); //mergi pe index si inainte de toate incepi o sesiune ca sa putem verifica
                     $_SESSION['username'] = $row['username'];
-                    $_SESSION['id'] = $row['id'];
-
+                    $_SESSION['ID'] = $row['ID'];
                     header("Location:../Login/login.php?login=succes");
-                    header("Location:../user_logged.php");
+                    header("Location:../index.php");
                     // include('');
                     // exit();
                 } else {
@@ -40,7 +39,8 @@ if (isset($_POST['submit'])) {
                     exit();
                 }
             } else {
-                header("Location:../Login/login.php?error=wrongpassword");
+                header("Location:../Login/login.php?error=usernotfound");
+                // header("Location:../Login/login.php?error=wrongpassword");
                 exit();
             }
         }
