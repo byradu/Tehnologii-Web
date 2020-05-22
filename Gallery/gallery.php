@@ -12,10 +12,41 @@ session_start();
     <link rel="icon" type="image/png" href="..\logo.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
+<script>
+    function checkTara(s) {
+        if ((s == "tara-asc") && (document.getElementById("tara-desc").checked)) {
+            alert("Selectati doar unul dintre filtrele:\n Tara-ascendent \n Tara-descendent");
+            document.getElementById("tara-asc").checked = false;
+        } else if ((s == "tara-desc") && (document.getElementById("tara-asc").checked)) {
+            alert("Selectati doar unul dintre filtrele:\n Tara-ascendent \n Tara-descendent");
+            document.getElementById("tara-desc").checked = false;
+        }
+    }
+
+    function checkOrd(s) {
+        if ((s == "ord-desc") && (document.getElementById("ord-asc").checked)) {
+            alert("Selectati doar unul dintre filtrele: \nOrdine-desc\n Ordine-asc");
+            document.getElementById("ord-desc").checked = false;
+        } else if ((s == "ord-asc") && (document.getElementById("ord-desc").checked)) {
+            alert("Selectati doar unul dintre filtrele: \n Ordine-desc\n Ordine-asc");
+            document.getElementById("ord-asc").checked = false;
+        }
+    }
+
+    function checkValue(s){
+        if((s=="value-asc")&&(document.getElementById("value-desc").checked)){
+            alert("Alegeti doar unul dintre filtrele: \n Valoare asc \n Valoare desc");
+            document.getElementById("value-asc").checked=false;
+        }else if((s=="value-desc")&&(document.getElementById("value-asc").checked)){
+            alert("Alegeti doar unul dintre filtrele: \n Valoare asc \n Valoare desc");
+            document.getElementById("value-desc").checked=false;
+        }
+    }
+</script>
 
 <body>
     <header>
-    <!-- <h2>Numismatic Artefact Explorer - Gallery</h2> -->
+        <!-- <h2>Numismatic Artefact Explorer - Gallery</h2> -->
         <?php
         if (isset($_SESSION['username'])) {
             if ($_SESSION['username'] == "admin") {
@@ -35,7 +66,7 @@ session_start();
                 
             </div>';
                 // echo'<h1>HAI ADMINE</h1>';\
-            }else{
+            } else {
                 echo '<div class="gallery-upload"> 
                 <form action="../Includes/gallery-upload.php" method="POST" enctype="multipart/form-data">
                     <a href="../index.php">Home</a><br>
@@ -52,40 +83,118 @@ session_start();
                 
             </div>';
             }
-        }else{
+        } else {
             echo '<p style="font-size:150%;color:white;">Creati-va un cont pentru a putea sa va alcatuiti o colectie</p>';
         }
         ?>
 
     </header>
     <main style="background:white;">
+        <div class="sortare">
+            <form action="gallery.php" method="POST">
+                <label for="tara-asc">Tara-ascendent</label>
+                <input type="checkbox" id="tara-asc" name="tara-asc" onclick="checkTara('tara-asc')">
+                <label for="tara-desc">Tara-descendent</label>
+                <input type="checkbox" id="tara-desc" name="tara-desc" onclick="checkTara('tara-desc')">
+                <label for="ord-desc">Ordine desc</label>
+                <input type="checkbox" id="ord-desc" name="ord-desc" onclick="checkOrd('ord-desc')">
+                <label for="ord-asc">Ordine asc</label>
+                <input type="checkbox" id="ord-asc" name="ord-asc" onclick="checkOrd('ord-asc')">
+                <label for="value-asc">Valoare asc</label>
+                <input type="checkbox" id="value-asc" name="value-asc" onclick="checkValue('value-asc')">
+                <label for="value-desc">Valoare desc</label>
+                <input type="checkbox" id="value-desc" name="value-desc" onclick="checkValue('value-desc')">
+                <button type="submit" value="submit">Sorteaza</button>
+                
+                <!-- <input type="checkbox">
+            <input type="checkbox">
+            <input type="checkbox">
+            <input type="checkbox">
+            <input type="checkbox">
+            <input type="checkbox"> -->
+            </form>
+        </div>
         <div>
-            <h3>Romania 🥇🥇🥇🥇🥇🥇🥇🥇🥇</h3>
-            
+            <!-- <h3>Romania 🥇🥇🥇🥇🥇🥇🥇🥇🥇</h3> -->
+
             <ul>
-            <?php 
+                <?php
                 include_once '../Includes/connection.inc.php';
-                $sql="SELECT * FROM COINS";
-                $stmt=mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt,$sql)){
-                    echo 'AFARA IN PLM';
-                }else{
+                $sql = "SELECT * FROM COINS";
+                if (isset($_POST['ord-desc'])) {
+                    $sql = "SELECT * FROM COINS order by 1 DESC";
+                }
+                if (isset($_POST['ord-ASC'])) {
+                    $sql = "SELECT * FROM COINS order by 1 asc";
+                }
+                if (isset($_POST['tara-desc'])) {
+                    $sql = "SELECT * FROM COINS order by country DESC";
+                }
+                if (isset($_POST['tara-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country ASC";
+                }
+                if (isset($_POST['tara-asc']) && isset($_POST['ord-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 ASC";
+                }
+                if (isset($_POST['tara-asc']) && isset($_POST['ord-desc'])) {
+                    $sql = "SELECT * FROM COINS order by country ASC,1 desc";
+                }
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country desc,1 ASC";
+                }
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-desc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 desc";
+                }
+                if(isset($_POST['value-desc'])){
+                    $sql="SELECT * FROM COINS ORDER BY value desc";
+                }
+                if(isset($_POST['value-asc'])){
+                    $sql="SELECT * FROM COINS ORDER BY value asc";
+                }
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) &&isset($_POST['value-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 desc, value asc";
+                }
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) &&isset($_POST['value-desc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 desc, value desc";
+                }  
+                if (isset($_POST['tara-asc']) && isset($_POST['ord-desc']) &&isset($_POST['value-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country asc,1 desc, value asc";
+                }
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) &&isset($_POST['value-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 desc, value asc";
+                }
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-asc']) &&isset($_POST['value-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 asc, value asc";
+                }    
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) &&isset($_POST['value-desc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 desc, value desc";
+                }
+                if (isset($_POST['tara-desc']) && isset($_POST['ord-asc']) &&isset($_POST['value-asc'])) {
+                    $sql = "SELECT * FROM COINS order by country,1 asc, value asc";
+                }
+                
+
+
+                $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                    echo 'SQL ERROR';
+                } else {
                     mysqli_stmt_execute($stmt);
-                    $result=mysqli_stmt_get_result($stmt);
-                    while($row=mysqli_fetch_assoc($result)){
+                    $result = mysqli_stmt_get_result($stmt);
+                    while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
-                        <img src="gallery/' . $row["imgFullName"] . '">
-                        <p>Title: ' .$row['title'] . '</p>
-                        <p>Value: ' .$row['value'] . '</p>
-                        <p>Country: ' .$row['country'] . '</p>
-                        <p>Created at: ' .$row['createdAt'] . '</p>
-                        <p>Description: ' .$row['description'] . '</p>
+                        <div style="background:white;"><img src="gallery/' . $row["imgFullName"] . '"></div>
+                        <p>Title: ' . $row['title'] . '</p>
+                        <p>Value: ' . $row['value'] . '</p>
+                        <p>Country: ' . $row['country'] . '</p>
+                        <p>Created at: ' . $row['createdAt'] . '</p>
+                        <p class="wrapword">Description: ' . $row['description'] . '</p>
                         </li>';
                     }
                 }
-            ?>
-                <li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;border-radius:100deg;">
+                ?>
+                <!-- <li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;border-radius:100deg;">
                     <h5> Title: 5 Sutimi - Alexandru Ioan Cuza</h5>
                     <img src="https://en.numista.com/catalogue/photos/roumanie/5e5c5a15796da7.25898472-original.jpg" alt="5sute">
                     <img src="https://en.numista.com/catalogue/photos/roumanie/5e5c5a153fd816.84235286-original.jpg" alt="5sute2">
@@ -173,7 +282,7 @@ session_start();
                     <h5>5 Sutimi - Alexandru Ioan Cuza</h5>
                     <img src="https://en.numista.com/catalogue/photos/roumanie/5e5c5a15796da7.25898472-original.jpg" alt="5sute">
                     <img src="https://en.numista.com/catalogue/photos/roumanie/5e5c5a153fd816.84235286-original.jpg" alt="5sute2">
-                </li>
+                </li> -->
             </ul>
         </div>
     </main>
