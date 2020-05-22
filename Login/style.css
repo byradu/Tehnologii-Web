@@ -96,6 +96,20 @@ body {
     color: #25f54f;
 }
 
+/* necesar pentru a corecta stylingul oferit de auto sugestii */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(163, 163, 163,1) inset !important;
+   
+}
+
+/* necesar pentru a corecta stylingul oferit de auto sugestii */
+input:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+}
+
 @media screen and (max-width:1100px) {
     .go-home {
         margin-left: 5vw;

@@ -15,30 +15,52 @@ session_start();
 
 <body>
     <header>
-    <h2>Numismatic Artefact Explorer - Gallery</h2>
+    <!-- <h2>Numismatic Artefact Explorer - Gallery</h2> -->
         <?php
         if (isset($_SESSION['username'])) {
             if ($_SESSION['username'] == "admin") {
                 echo '<div class="gallery-upload"> 
                 <form action="../Includes/gallery-upload.php" method="POST" enctype="multipart/form-data">
-                    <input required type="text" name="filetitle" placeholder="File title">
-                    <input required type="number" name="valoare" placeholder="Value">
-                    <input required type="text" name="tara" placeholder="Country">
+                    <a href="../index.php">Home</a><br>
+                    <p>Introduceti o moneda noua: </p>    
+                    <input required type="text" name="filetitle" placeholder="Titlul monedei">
+                    <input required type="number" name="valoare" placeholder="Valoarea">
+                    <input required type="text" name="tara" placeholder="Tara">
                     <input required type="date" name="createdAt" placeholder="Perioada de emisie">
-                    <input required type="text" name="descriere" placeholder="Description">
-                    <input required type="file" name="file" placeholder="file">
-                    <button type="submit" name="submit">Upload</button>
+                    <input required type="text" name="descriere" placeholder="Descriere">
+                    <label for="file">Incarcati o poza</label>
+                    <input required type="file" id="file" name="file" placeholder="file" hidden>
+                    <button type="submit" name="submit">Adauga in colectie</button>
                 </form>
+                
             </div>';
                 // echo'<h1>HAI ADMINE</h1>';\
+            }else{
+                echo '<div class="gallery-upload"> 
+                <form action="../Includes/gallery-upload.php" method="POST" enctype="multipart/form-data">
+                    <a href="../index.php">Home</a><br>
+                    <p>Introduceti moneda dorita in propria colectie: </p>    
+                    <input required type="text" name="filetitle" placeholder="Titlul monedei">
+                    <input required type="number" name="valoare" placeholder="Valoarea">
+                    <input required type="text" name="tara" placeholder="Tara">
+                    <input required type="date" name="createdAt" placeholder="Perioada de emisie">
+                    <input required type="text" name="descriere" placeholder="Descriere">
+                    <label for="file">Incarcati o poza</label>
+                    <input required type="file" id="file" name="file" placeholder="file" hidden>
+                    <button type="submit" name="submit">Adauga in colectie</button>
+                </form>
+                
+            </div>';
             }
+        }else{
+            echo '<p style="font-size:150%;color:white;">Creati-va un cont pentru a putea sa va alcatuiti o colectie</p>';
         }
         ?>
 
     </header>
-    <main>
+    <main style="background:white;">
         <div>
-            <h3>Romania</h3>
+            <h3>Romania 🥇🥇🥇🥇🥇🥇🥇🥇🥇</h3>
             
             <ul>
             <?php 

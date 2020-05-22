@@ -1,55 +1,134 @@
-body{
+body {
     background-image: url(https://images.unsplash.com/photo-1539009139598-75df7c89734d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1929&q=80);
     background-size: cover;
     background-attachment: fixed;
-    color:white;
+    color: white;
     position: relative;
     height: auto;
     padding: 5px;
+    font-family: sans-serif;
 }
-header{
-    color:orange;
+
+header {
+    color: orange;
     padding: 5px;
     display: flex;
     justify-content: center;
 }
-main{
-    height:auto;
-    
+
+main {
+    height: auto;
+
 }
-div{
+
+div {
     padding: 1em;
 }
-ul{ 
+
+ul {
     list-style: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-li{
-    padding:0.5em;
-    
+
+li {
+    padding: 0.5em;
+
 }
-h5{
+
+h5 {
     border-right: 1px solid yellow;
     display: flex;
     justify-content: center;
 }
-h3{
-    display:flex;
+
+h3 {
+    display: flex;
     border-bottom: 3px solid orangered;
     margin-left: 5em;
 }
-img{
+
+img {
     padding: 0.5em;
     border-radius: 25%;
     width: 150px;
     height: 150px;
 }
-.bnc{
+
+.bnc {
     padding: 0.5em;
     border-radius: 10%;
     width: 200px;
     height: 150px;
 }
 
+.gallery-upload {
+    position: fixed;
+    top:0;
+    background: rgba(0, 0, 0, 0.8);
+    padding-top: 0;
+    margin: 0;    
+}
+
+.gallery-upload a{
+    display:block;
+}
+
+.gallery-upload p {
+    text-align: center;
+    
+    display:inline;
+}
+
+.gallery-upload input {
+    background-color: rgb(23, 134, 9);
+    color: white;
+    border: none;
+}
+
+/* necesar pentru a corecta stylingul oferit de auto sugestii */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgb(23, 134, 9) inset !important;
+    color: white;
+}
+
+/* necesar pentru a corecta stylingul oferit de auto sugestii */
+input:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+}
+
+.gallery-upload button,
+.gallery-upload label,
+.gallery-upload a {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+}
+
+
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+}
