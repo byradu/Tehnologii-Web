@@ -49,52 +49,11 @@ session_start();
         <div class="go-home">
             <a href="../index.php">Home</a>
         </div>
-        <!-- <h2>Numismatic Artefact Explorer - Gallery</h2> -->
-        <?php
-        if (isset($_SESSION['username'])) {
-            if ($_SESSION['username'] == "admin") {
-                echo '<div class="gallery-upload"> 
-                <form action="../Includes/gallery-upload.php" method="POST" enctype="multipart/form-data">
-                    <a href="../index.php">Home</a><br>
-                    <p>Introduceti o moneda noua: </p>    
-                    <input required type="text" name="filetitle" placeholder="Titlul monedei">
-                    <input required type="number" name="valoare" placeholder="Valoarea">
-                    <input required type="text" name="tara" placeholder="Tara">
-                    <input required type="date" name="createdAt" placeholder="Perioada de emisie">
-                    <input required type="text" name="descriere" placeholder="Descriere">
-                    <label for="file">Incarcati o poza</label>
-                    <input required type="file" id="file" name="file" placeholder="file" hidden>
-                    <button type="submit" name="submit">Adauga in colectie</button>
-                </form>
-                
-            </div>';
-                // echo'<h1>HAI ADMINE</h1>';\
-            } else {
-                //     echo '<div class="gallery-upload"> 
-                //     <form action="../Includes/gallery-upload.php" method="POST" enctype="multipart/form-data">
-                //         <a href="../index.php">Home</a><br>
-                //         <p>Introduceti moneda dorita in propria colectie: </p>    
-                //         <input required type="text" name="filetitle" placeholder="Titlul monedei">
-                //         <input required type="number" name="valoare" placeholder="Valoarea">
-                //         <input required type="text" name="tara" placeholder="Tara">
-                //         <input required type="date" name="createdAt" placeholder="Perioada de emisie">
-                //         <input required type="text" name="descriere" placeholder="Descriere">
-                //         <label for="file">Incarcati o poza</label>
-                //         <input required type="file" id="file" name="file" placeholder="file" hidden>
-                //         <button type="submit" name="submit">Adauga in colectie</button>
-                //     </form>
-
-                // </div>';
-            }
-        } else {
-            echo '<p style="font-size:150%;color:white;">Creati-va cont pentru a va putea alcatui o colectie</p>';
-        }
-        ?>
 
     </header>
     <main style="background:white;">
         <div class="sortare">
-            <form action="gallery.php" method="POST">
+            <form action="my_collection.php" method="POST">
                 <label for="tara-asc">Tara-ascendent</label>
                 <input type="checkbox" id="tara-asc" name="tara-asc" onclick="checkTara('tara-asc')">
                 <label for="tara-desc">Tara-descendent</label>
@@ -108,54 +67,47 @@ session_start();
                 <label for="value-desc">Valoare desc</label>
                 <input type="checkbox" id="value-desc" name="value-desc" onclick="checkValue('value-desc')">
                 <button type="submit" value="submit">Sorteaza</button>
-
-                <!-- <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox"> -->
             </form>
         </div>
         <div>
-            <!-- <h3>Romania 🥇🥇🥇🥇🥇🥇🥇🥇🥇</h3> -->
+
 
             <ul>
                 <?php
                 include_once '../Includes/connection.inc.php';
-                $sql = "SELECT * FROM COINS";
+                $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=".$_SESSION['ID'] .";";
                 if (isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS order by 1 DESC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by INVENTORY.id DESC";
                 }
                 if (isset($_POST['ord-ASC'])) {
-                    $sql = "SELECT * FROM COINS order by 1 asc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by INVENTORY.id ASC";
                 }
                 if (isset($_POST['tara-desc'])) {
-                    $sql = "SELECT * FROM COINS order by country DESC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country DESC";
                 }
                 if (isset($_POST['tara-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country ASC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country ASC";
                 }
                 if (isset($_POST['tara-asc']) && isset($_POST['ord-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country,1 ASC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country asc, COINS.id asc";
                 }
                 if (isset($_POST['tara-asc']) && isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS order by country ASC,1 desc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country asc, COINS.id desc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country desc,1 ASC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country DESC, COINS.ID asc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS order by country,1 desc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country DESC, COINS.id desc";
                 }
                 if (isset($_POST['value-desc'])) {
-                    $sql = "SELECT * FROM COINS ORDER BY value desc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.value DESC";
                 }
                 if (isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS ORDER BY value asc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.value ASC";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country,id desc, value asc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.value ASC";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-desc'])) {
                     $sql = "SELECT * FROM COINS order by country,id desc, value desc";
@@ -194,11 +146,9 @@ session_start();
                         <p>Created at: ' . $row['createdAt'] . '</p>
                         <p style="display:none;" class="wrapword">Description: ' . $row['description'] . '</p>';
                         if (isset($_SESSION['username'])) {
-                            if ($_SESSION['username'] == "admin") {
-                                echo '<button type="submit" id="btn-inventory" style="display:none;" name="submit-inventory" style="">Adauga in colectie</button></li>';
-                            } elseif ($_SESSION['username'] != "admin") {
-                                echo '<form action="gallery.php?action=add&id=' . $row['id'] . '" method="POST">
-                                <button type="submit" id="btn-inventory" style="display:block;" name="submit-inventory" style="">Adauga in colectie</button></form></li>';
+                            if ($_SESSION['username'] != "admin") {
+                                echo '<form action="my_collection.php?action=remove&id=' . $row['id'] . '" method="POST">
+                                <button type="submit" id="btn-inventory" style="display:block;" name="remove-inventory" style="">Elimina din colectie</button></form></li>';
                             }
                         }
                     }
@@ -206,17 +156,15 @@ session_start();
                 if (isset($_GET['id'])) {
                     $id_moneda = $_GET['id'];
                     $id_user = $_SESSION['ID'];
-                    $azi = date("Y-m-d");
-                    $sql = "INSERT INTO inventory(id_user,id_coin,added_at) values(?,?,?);";
-                    // echo '<p style="margin-left:50vw;color:red;font-size:100px;">'. $azi . '</p>';
-                    $stmt=mysqli_stmt_init($conn);
+                    $sql = "DELETE FROM inventory where id_user=?";
+                    $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        header("Location:gallery.php?error=sqlerror");
+                        header("Location:my_collection.php?error=sqlerror");
                         exit();
                     }
-                    mysqli_stmt_bind_param($stmt,"iis",$id_user,$id_moneda,$azi);
+                    mysqli_stmt_bind_param($stmt, "i", $id_user);
                     mysqli_stmt_execute($stmt);
-                    header("Location:gallery.php?added=success");
+                    header("Location:my_collection.php?removed=success");
                 }
                 ?>
             </ul>

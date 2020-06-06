@@ -27,8 +27,9 @@ session_start();
         <ul>
             <?php
         if (isset($_SESSION['username'])) {
+            if($_SESSION['username']!="admin")
             echo '<li>
-                    <a href="#">My collection</a>
+                    <a href="Gallery/my_collection.php">My collection</a>
                 </li>';
         } else {
             echo '<li>

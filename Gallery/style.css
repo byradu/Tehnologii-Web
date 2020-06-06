@@ -104,7 +104,8 @@ input:-webkit-autofill {
 
 .gallery-upload button,
 .gallery-upload label,
-.gallery-upload a {
+.gallery-upload a,
+#btn-inventory {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -113,6 +114,7 @@ input:-webkit-autofill {
     text-decoration: none;
     display: inline-block;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .wrapword {
@@ -152,4 +154,23 @@ input:-webkit-autofill {
     flex-direction: column;
     width: 10vw;
     height: 20vh;
+}
+
+header{
+    display:flex;
+    justify-content: space-between;
+}
+
+.go-home {
+    display:inline;
+}
+
+.go-home a {
+    text-decoration: none;
+    font-size: 40px;
+    color: greenyellow;
+}
+
+.go-home a:hover {
+    color: rgba(0, 200, 0, 0.8);
 }
