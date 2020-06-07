@@ -187,12 +187,12 @@ session_start();
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
-                        <div style="background:white;"><img src="gallery/' . $row["imgFullName"] . '"></div>
+                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"></div>
                         <p>Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
                         <p>Created at: ' . $row['createdAt'] . '</p>
-                        <p style="display:none;" class="wrapword">Description: ' . $row['description'] . '</p>';
+                        <p class="wrapword">Description: ' . $row['description'] . '</p>';
                         if (isset($_SESSION['username'])) {
                             if ($_SESSION['username'] == "admin") {
                                 echo '<button type="submit" id="btn-inventory" style="display:none;" name="submit-inventory" style="">Adauga in colectie</button></li>';

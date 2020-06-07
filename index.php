@@ -44,6 +44,9 @@ session_start();
                 <a href="Gallery/gallery.php">Gallery</a>
             </li>
             <li>
+                <a href="rss.php">RSS Feed</a>
+            </li>
+            <li>
                 <a href="https://github.com/byradu/Tehnologii-Web"><i class="fa fa-github"></i></a>
             </li>
             <?php
