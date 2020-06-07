@@ -208,7 +208,7 @@ session_start();
                     $id_user = $_SESSION['ID'];
                     $azi = date("Y-m-d");
                     $sql = "INSERT INTO inventory(id_user,id_coin,added_at) values(?,?,?);";
-                    // echo '<p style="margin-left:50vw;color:red;font-size:100px;">'. $azi . '</p>';
+                    // echo '<p style="margin-left:30vw;color:red;font-size:50px;">'. $id_user . '</p>';
                     $stmt=mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
                         header("Location:gallery.php?error=sqlerror");
@@ -216,7 +216,8 @@ session_start();
                     }
                     mysqli_stmt_bind_param($stmt,"iis",$id_user,$id_moneda,$azi);
                     mysqli_stmt_execute($stmt);
-                    header("Location:gallery.php?added=success");
+                    echo '<p style="margin-left:30vw;color:red;font-size:50px;">'. $id_user . '</p>';
+                    // header("Location:gallery.php?added=success");
                 }
                 ?>
             </ul>
