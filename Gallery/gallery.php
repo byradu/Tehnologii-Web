@@ -11,7 +11,25 @@ session_start();
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="..\logo.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<!-- <script>
+            $(document).ready(function(){
+                $('btn-inventory').on('click',function(){
+                    $.ajax({
+				        
+				        url: "insert.php",
+				        type: "POST",
+				        data: {
+                            id: $row['id']
+                            },
+                        success: function(data){
+                        alert("Data Save: " + data);
+                            }
+                });
+            });
+</script> -->
 <script>
     function checkTara(s) {
         if ((s == "tara-asc") && (document.getElementById("tara-desc").checked)) {
@@ -187,23 +205,23 @@ session_start();
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
-                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"></div>
-                        <p>Title: ' . $row['title'] . '</p>
+                        <p>' .$row['title'] .'</p>
+                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"> <img src="' . $row["reversePic"] . '"></div>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
-                        <p>Created at: ' . $row['createdAt'] . '</p>
-                        <p class="wrapword">Description: ' . $row['description'] . '</p>';
+                        <p>Created at: ' . $row['createdAt'] . '</p> 
+                        <p class="wrapword">' . $row['description'] . '</p>';
                         if (isset($_SESSION['username'])) {
                             if ($_SESSION['username'] == "admin") {
                                 echo '<button type="submit" id="btn-inventory" style="display:none;" name="submit-inventory" style="">Adauga in colectie</button></li>';
-                            } elseif ($_SESSION['username'] != "admin") {
-                                echo '<form action="gallery.php?action=add&id=' . $row['id'] . '" method="POST">
-                                <button type="submit" id="btn-inventory" style="display:block;" name="submit-inventory" style="">Adauga in colectie</button></form></li>';
+                            } elseif ($_SESSION['username'] != "admin") { /* action="../Includes/insert.php?action=add&id=' . $row['id'] . '" */
+                                echo '<form action="../Includes/insert.php?action=add&id=' . $row['id'] . '" method="POST">
+                                <button type="submit" id="btn-inventory" name="submit-inventory" >Adauga in colectie</button></form></li>';
                             }
                         }
                     }
-                }
-                if (isset($_GET['id'])) {
+                } 
+               /*  if (isset($_GET['id'])) {
                     $id_moneda = $_GET['id'];
                     $id_user = $_SESSION['ID'];
                     $sql = "INSERT INTO inventory (id_user,id_coin) values(".$id_user.",".$id_moneda.");";
@@ -217,7 +235,7 @@ session_start();
                     mysqli_stmt_execute($stmt);
                     echo '<p style="margin-left:30vw;color:red;font-size:50px;">'. $id_user . '</p>';
                     // header("Location:gallery.php?added=success");
-                }
+                } */
                 ?>
             </ul>
         </div>

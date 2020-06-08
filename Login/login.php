@@ -38,7 +38,10 @@
                         echo '<p>Acest user nu exista</p>';
                     } else if ($_GET['error'] == "wrongpassword") {
                         echo '<p>Parola gresita</p>';
-                    }
+                    }/* else if($_GET['error']=="existentEmail"){
+                        echo '<p>Acest email este utilizat deja </p>'
+                        //urmeaza a fi adaugat
+                    } */
                 }
 
                 ?>

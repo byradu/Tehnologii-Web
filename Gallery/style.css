@@ -115,9 +115,18 @@ input:-webkit-autofill {
     display: inline-block;
     font-size: 17px;
     cursor: pointer;
+    margin-bottom: 1em;
+}
+#btn-inventory:hover{
+    background-color: white;
+    border:1px solid #4CAF50;
+    color: #4CAF50;
+	transition: all 200ms ease;
 }
 
+
 .wrapword {
+    padding: 0.5em;
     white-space: -moz-pre-wrap !important;  
     white-space: -pre-wrap;      
     white-space: -o-pre-wrap;    
