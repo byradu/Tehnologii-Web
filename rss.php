@@ -1,5 +1,7 @@
-<?php header("Content-Type: application/rss+xml; charset=ISO-8859-1");
-    
+<?php 
+
+    header("Content-Type: text/xml; charset=iso-8859-1");
+    echo "<?xml version='1.0' encoding='UTF-8' ?>" . PHP_EOL;
     include_once 'Includes/connection.inc.php';
     $sql="select count(id_coin) as numar,title,value,country,createdAt from inventory i join coins c on i.id_coin=c.id  group by id_coin order by 1 desc LIMIT 10;";
     $stmt=mysqli_stmt_init($conn);
@@ -10,9 +12,7 @@
         $result=mysqli_stmt_get_result($stmt);
         $url="http://localhost/Tehnologii-Web/";
         
-        echo "<?xml version='1.0' encoding='UTF-8' ?>" . PHP_EOL;
-        
-        echo "<rss version='2.0'" . PHP_EOL;
+        echo "<rss version='2.0'>" . PHP_EOL;
 
         echo "<channel>" . PHP_EOL;
 
@@ -36,5 +36,3 @@
 
         echo "</rss>" . PHP_EOL;
     }
-
-?>
