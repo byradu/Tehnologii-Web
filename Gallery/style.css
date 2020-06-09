@@ -108,7 +108,7 @@ input:-webkit-autofill {
 .gallery-upload a,
 #btn-inventory {
     background-color: #4CAF50;
-    border: none;
+    border: 1px solid #4CAF50;
     color: white;
     padding: 10px 25px;
     text-align: center;
@@ -117,6 +117,7 @@ input:-webkit-autofill {
     font-size: 17px;
     cursor: pointer;
     margin-bottom: 1em;
+    transition: 0.4s;
 }
 #btn-inventory:hover{
     background-color: white;

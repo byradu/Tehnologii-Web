@@ -138,7 +138,7 @@ session_start();
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
-                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"> <img src="' . $row["reversePic"] . '"></div>
+                        <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
                         <p>Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
@@ -174,7 +174,7 @@ session_start();
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
-                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"> <img src="' . $row["reversePic"] . '"></div>
+                        <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
                         <p>Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>

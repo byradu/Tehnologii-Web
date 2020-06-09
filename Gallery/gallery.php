@@ -13,23 +13,10 @@ session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 </head>
-<!-- <script>
-            $(document).ready(function(){
-                $('btn-inventory').on('click',function(){
-                    $.ajax({
-				        
-				        url: "insert.php",
-				        type: "POST",
-				        data: {
-                            id: $row['id']
-                            },
-                        success: function(data){
-                        alert("Data Save: " + data);
-                            }
-                });
-            });
-</script> -->
+
 <script>
     function checkTara(s) {
         if ((s == "tara-asc") && (document.getElementById("tara-desc").checked)) {
@@ -67,6 +54,7 @@ session_start();
         <div class="go-home">
             <a href="../index.php">Home</a>
         </div>
+       
         <!-- <h2>Numismatic Artefact Explorer - Gallery</h2> -->
         <?php
         if (isset($_SESSION['username'])) {
@@ -206,7 +194,7 @@ session_start();
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
                         <p>' .$row['title'] .'</p>
-                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"> <img src="' . $row["reversePic"] . '"></div>
+                        <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
                         <p>Created at: ' . $row['createdAt'] . '</p> 
@@ -215,32 +203,34 @@ session_start();
                             if ($_SESSION['username'] == "admin") {
                                 echo '<button type="submit" id="btn-inventory" style="display:none;" name="submit-inventory" style="">Adauga in colectie</button></li>';
                             } elseif ($_SESSION['username'] != "admin") { /* action="../Includes/insert.php?action=add&id=' . $row['id'] . '" */
-                                echo '<form action="../Includes/insert.php?action=add&id=' . $row['id'] . '" method="POST">
+                                echo '<form action="../Includes/insert.php?action=add&id=' . $row['id'] . '" method="POST" id= "insert">
                                 <button type="submit" id="btn-inventory" name="submit-inventory" >Adauga in colectie</button></form></li>';
+
                             }
                         }
                     }
                 } 
-               /*  if (isset($_GET['id'])) {
-                    $id_moneda = $_GET['id'];
-                    $id_user = $_SESSION['ID'];
-                    $sql = "INSERT INTO inventory (id_user,id_coin) values(".$id_user.",".$id_moneda.");";
-                    // echo '<p style="margin-left:30vw;color:red;font-size:50px;">'. $id_user . '</p>';
-                    $stmt=mysqli_stmt_init($conn);
-                    if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        header("Location:gallery.php?error=sqlerror");
-                        exit();
-                    }
-                    // mysqli_stmt_bind_param($stmt,"ii",$id_user,$id_moneda);
-                    mysqli_stmt_execute($stmt);
-                    echo '<p style="margin-left:30vw;color:red;font-size:50px;">'. $id_user . '</p>';
-                    // header("Location:gallery.php?added=success");
-                } */
                 ?>
+            <!--     <script>
+            $(document).ready(function(){
+              $("#btn-inventory").click(function(){
+                 var coin_id = "" ;
+                        $.ajax({
+                            url: "../Includes/insert.php",
+                            method: "post",
+                            data: {id: coin_id},
+                            success: function(response){
+                                $("#result").html(response);
+                                //alert("Coin has been inserted");
+                            }
+                        });
+                      });
+                 });
+       </script> -->
             </ul>
         </div>
     </main>
-
+       <p id="result" style="color:green;"></p>
 </body>
 
 </html>
