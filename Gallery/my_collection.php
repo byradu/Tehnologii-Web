@@ -75,39 +75,40 @@ session_start();
             <ul>
                 <?php
                 include_once '../Includes/connection.inc.php';
-                $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=".$_SESSION['ID'] .";";
+                $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . ";";
                 if (isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by INVENTORY.id DESC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by INVENTORY.id DESC";
                 }
                 if (isset($_POST['ord-ASC'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by INVENTORY.id ASC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by INVENTORY.id ASC";
                 }
                 if (isset($_POST['tara-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country DESC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC";
                 }
                 if (isset($_POST['tara-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country ASC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country ASC";
                 }
                 if (isset($_POST['tara-asc']) && isset($_POST['ord-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country asc, COINS.id asc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country asc, COINS.id asc";
                 }
                 if (isset($_POST['tara-asc']) && isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country asc, COINS.id desc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country asc, COINS.id desc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country DESC, COINS.ID asc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC, COINS.ID asc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.country DESC, COINS.id desc";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC, COINS.id desc";
                 }
                 if (isset($_POST['value-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.value DESC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.value DESC";
                 }
                 if (isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.value ASC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.value ASC";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" .$_SESSION['ID'] . " order by COINS.value ASC";
+                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.value ASC";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-desc'])) {
                     $sql = "SELECT * FROM COINS order by country,id desc, value desc";
@@ -128,8 +129,6 @@ session_start();
                     $sql = "SELECT * FROM COINS order by country,id asc, value asc";
                 }
 
-
-
                 $stmt = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
                     echo 'SQL ERROR';
@@ -139,7 +138,7 @@ session_start();
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
-                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"></div>
+                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"> <img src="' . $row["reversePic"] . '"></div>
                         <p>Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
@@ -147,8 +146,8 @@ session_start();
                         <p style="display:none;" class="wrapword">Description: ' . $row['description'] . '</p>';
                         if (isset($_SESSION['username'])) {
                             if ($_SESSION['username'] != "admin") {
-                                echo '<form action="my_collection.php?action=remove&id=' . $row['id'] . '" method="POST">
-                                <button type="submit" id="btn-inventory" style="display:block;" name="remove-inventory" style="">Elimina din colectie</button></form></li>';
+                                echo '<form action="my_collection.php?action=remove&id=' . $row['iid'] . '" method="POST">
+                                <button type="submit" id="btn-inventory"  name="remove-inventory" style="">Elimina din colectie</button></form></li>';
                             }
                         }
                     }
@@ -156,15 +155,39 @@ session_start();
                 if (isset($_GET['id'])) {
                     $id_moneda = $_GET['id'];
                     $id_user = $_SESSION['ID'];
-                    $sql = "DELETE FROM inventory where id_user=?";
+                    $sql = "DELETE FROM inventory where id_user=? and id=?";
                     $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
                         header("Location:my_collection.php?error=sqlerror");
                         exit();
                     }
-                    mysqli_stmt_bind_param($stmt, "i", $id_user);
+                    mysqli_stmt_bind_param($stmt, "ii", $id_user, $id_moneda);
                     mysqli_stmt_execute($stmt);
-                    header("Location:my_collection.php?removed=success");
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . ";";
+                    $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                    echo 'SQL ERROR';
+                } else {
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
+
+                        <div style="background:white;"><img src="' . $row["imgFullName"] . '"> <img src="' . $row["reversePic"] . '"></div>
+                        <p>Title: ' . $row['title'] . '</p>
+                        <p>Value: ' . $row['value'] . '</p>
+                        <p>Country: ' . $row['country'] . '</p>
+                        <p>Created at: ' . $row['createdAt'] . '</p>
+                        <p style="display:none;" class="wrapword">Description: ' . $row['description'] . '</p>';
+                        if (isset($_SESSION['username'])) {
+                            if ($_SESSION['username'] != "admin") {
+                                echo '<form action="my_collection.php?action=remove&id=' . $row['iid'] . '" method="POST">
+                                <button type="submit" id="btn-inventory"  name="remove-inventory" style="">Elimina din colectie</button></form></li>';
+                            }
+                        }
+                    }
+                }
                 }
                 ?>
             </ul>
