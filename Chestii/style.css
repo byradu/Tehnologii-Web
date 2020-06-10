@@ -1,0 +1,28 @@
+html{
+    font-family: 'Open Sans', sans-serif;
+    font-size:120%;
+    letter-spacing: 0.5px;
+}
+
+header{
+    margin-bottom: 5vh;
+}
+
+body{
+    margin:0;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
+
+a{
+    text-decoration: none;
+    color: crimson;
+}
+
+header{
+    text-align: center;
+    font-size: 150%;
+    color:black;
+    
+}
+

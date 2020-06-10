@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarly HTML- Raport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body prefix="schema: http://schema.org">
+    <header>
+        <h1>Scholarly HTML- Raport</h1>
+    </header>
+    <div role="contentinfo">
+        <dl>
+            <dt>Authors</dt>
+            <dd>
+
+                <a href="https://github.com/SteLoghin">Loghin Alexandru-Stelian</a> & <a
+                    href="https://github.com/byradu">Zaharioaei Radu</a> <br>
+            </dd>
+        </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+        <h2>1.Abstract</h2>
+        <p>
+            Scholarly HTML is a domain-specific rich document format built entirely on open standards
+            that enables the interoperable exchange of scholarly articles in a manner that is compatible
+            with off-the-shelf browsers. This document describes how Scholarly HTML works and how it is
+            encoded.
+        </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+        <h2>2. Introduction</h2>
+        <h3>2.1 Cerinta proiectului</h3>
+        <p>Titlu proiect: NumAX</p>
+        <p>
+            Să se dezvolte o aplicație Web destinată colecționarilor de monede. Pe baza facilităților de căutare
+            multi-criteriala implementate, utilizatorii autentificați vor putea crea, inventaria și partaja informații
+            despre monede de interes în functie de diverse caracteristici (imagine, valoare, țară, perioadă de emisie,
+            istoric etc.), plus vor putea importa/exporta datele referitoare la monedele deținute.
+
+            Se vor genera statistici diverse ce pot fi exportate în formate deschise – minimal, CSV si PDF. Se va crea,
+            de asemenea, un clasament al celor mai populare emisii monetare, disponibil și ca flux de date RSS.
+            Inspiratie: <a href="https://en.numista.com/">Numista</a>.
+        </p>
+    </section>
+    <section id="development" >
+        <h2>3. Etapele dezvoltarii proiectului</h2>
+        <h3>3.1 Interfata</h3>
+        <p>
+            Initial am inceput sa lucram la aspectul aplicatiei web, avand mai multe discutii despre acest subiect am
+            cazut de acord la o interafata care se potriveste proiectului nostru. Pentru navigarea intre paginile
+            website-ului am creat un navbar folosind Flexbox, pentru galeria ce contine monede am apelat tot la Flexbox
+            pentru a putea crea un design frumos si totodata responsive.
+        </p>
+        <h3>3.2 Stocarea datelor</h3>
+        <p>
+            Stocarea datelor este realizata cu ajutorul unei baze de date relationale MySQL, initial fiecare lucrand
+            local si mai tarziu mutand-o in cloud utilizand serviciile furnizate de catre <a
+                href="https://dashboard.heroku.com/">Heroku</a>. Toate informatiile despre utilizatori, despre monede si
+            despre colectiile utilizatorilor sunt stocate in baza de date mentionata anterior, acestea fiind
+            persistente.
+        </p>
+        <h3>3.3 Sistemul de inregistrare si logare</h3>
+        <p>
+            Dupa ce ne-am simtit confortabili cu noul limbaj PHP, am inceput sa lucram la partea de inregistrare/logare
+            totodata avand grija sa tratam erorile posibile intampinate de user, oferindu-le feedback. Un utilizator
+            care nu este inregistrat, poate sa vizualizeze galeria si fluxul RSS al celor mai populare monede.
+        </p>
+        <h3>3.4 Modul de administrare</h3>
+        <p>
+            Administratorii paginii pot sa modifice galeria expusa, adaugand monede noi, furnizand datele necesare
+            pentru a putea fi introduse in baza de date. TRE SA SCRIEM MAI MULT AICI CRED.
+        </p>
+        <h3>3.5 Implementarea galeriei. Colectia unui utilizator</h3>
+        <p>
+            Dupa cum am mentionat mai sus, am folosit Flexbox pentru a realiza galeria propriu-zisa, toate datele
+            afisate sunt preluate pe baza unei interogari efectuate asupra tabelului aferent datelor. Am implementat
+            cautarea multi-criteriala, utilizatorii putand alege din mai multe criterii. Am avut grija ca un utilizator
+            sa nu poata sa aleaga doua criterii contradictorii(ascendent si descendent). Aici un utilizator poate sa isi
+            creeze propria colectie, alegand dupa gusturile sale.
+            Utilizatorii pot sa isi verifice propria colectie accesand pagina "My Collection", daca vreodata vor dori sa
+            elimine o moneda, website-ul va reactiona corespunzator(WIP WIP WIP WIP).
+        </p>
+        <h3>3.6 Realizarea fluxului RSS</h3>
+        <p>
+            Un flux RSS este o modalitate prin care se usureaza prezentarea unor date unui utilizator. Mai exact,
+            utilizatorul citind acest flux, poate afla noutati legate despre diferite subiecte. In cadrul acestui
+            proiect, rolul fluxului RSS este de a informa utilizatorii in legatura cu popularitatea monedelor in ordine
+            descendenta. XML-ul este unul dinamic adica mereu se updateaza daca are loc vreo schimbare in topul celor 10
+            monede populare, preluand date din BD.
+        </p>
+        <h3>3.7 EXPORT SI ALTE PROSTII</h3>
+    </section>
+    <section id="References" >
+        <h2>4. Referinte</h2>
+        <dl>
+            <dt id="ref-Heroku">Heroku</dt>
+            <dd property="schema:citation" typeof="schema:Webpage" resource="https://dashboard.heroku.com/">
+                <cite property="schema:name">
+                    <a href="https://dashboard.heroku.com/">Gazduirea bazei de date in Cloud</a>
+                </cite>
+            </dd>
+            <dt id="ref-XAMPP">XAMPP</dt>
+            <dd property="schema:citation" typeof="schema:Webpage" resource="https://www.apachefriends.org/ro/index.html">
+                <cite property="schema:name">
+                    <a href="https://www.apachefriends.org/ro/index.html">Gazduirea locala a aplicatiei</a>
+                </cite>
+            </dd>
+            <dt id="ref-noi">ALTE SMECHERII PE CARE O SA LE FOLOSIM</dt>
+            <dd property="schema:citation" typeof="schema:Webpage" resource="https://www.apachefriends.org/ro/index.html">
+                <cite property="schema:name">
+                    <a href="https://www.apachefriends.org/ro/index.html">Gazduirea locala a aplicatiei</a>
+                </cite>
+            </dd>
+        </dl>
+
+    </section>
+</body>
+
+</html>
