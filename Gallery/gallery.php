@@ -51,10 +51,13 @@ session_start();
 
 <body>
     <header>
+    <?php
+        if($_SESSION['username']!="admin")
+        echo ' 
         <div class="go-home">
             <a href="../index.php">Home</a>
-        </div>
-       
+        </div>';
+    ?>
         <!-- <h2>Numismatic Artefact Explorer - Gallery</h2> -->
         <?php
         if (isset($_SESSION['username'])) {
@@ -75,23 +78,7 @@ session_start();
                 
             </div>';
                 // echo'<h1>HAI ADMINE</h1>';\
-            } else {
-                //     echo '<div class="gallery-upload"> 
-                //     <form action="../Includes/gallery-upload.php" method="POST" enctype="multipart/form-data">
-                //         <a href="../index.php">Home</a><br>
-                //         <p>Introduceti moneda dorita in propria colectie: </p>    
-                //         <input required type="text" name="filetitle" placeholder="Titlul monedei">
-                //         <input required type="number" name="valoare" placeholder="Valoarea">
-                //         <input required type="text" name="tara" placeholder="Tara">
-                //         <input required type="date" name="createdAt" placeholder="Perioada de emisie">
-                //         <input required type="text" name="descriere" placeholder="Descriere">
-                //         <label for="file">Incarcati o poza</label>
-                //         <input required type="file" id="file" name="file" placeholder="file" hidden>
-                //         <button type="submit" name="submit">Adauga in colectie</button>
-                //     </form>
-
-                // </div>';
-            }
+            } 
         } else {
             echo '<p style="font-size:150%;color:white;">Creati-va cont pentru a va putea alcatui o colectie</p>';
         }
@@ -114,18 +101,9 @@ session_start();
                 <label for="value-desc">Valoare desc</label>
                 <input type="checkbox" id="value-desc" name="value-desc" onclick="checkValue('value-desc')">
                 <button type="submit" value="submit">Sorteaza</button>
-
-                <!-- <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox">
-            <input type="checkbox"> -->
             </form>
         </div>
         <div>
-            <!-- <h3>Romania 🥇🥇🥇🥇🥇🥇🥇🥇🥇</h3> -->
-
             <ul>
                 <?php
                 include_once '../Includes/connection.inc.php';
@@ -182,8 +160,6 @@ session_start();
                     $sql = "SELECT * FROM COINS order by country,id asc, value asc";
                 }
 
-
-
                 $stmt = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
                     echo 'SQL ERROR';
@@ -201,7 +177,8 @@ session_start();
                         <p class="wrapword">' . $row['description'] . '</p>';
                         if (isset($_SESSION['username'])) {
                             if ($_SESSION['username'] == "admin") {
-                                echo '<button type="submit" id="btn-inventory" style="display:none;" name="submit-inventory" style="">Adauga in colectie</button></li>';
+                                // echo '<form action="../Includes/delete.php?action=remove&id=' . $row['id'] . '" method="POST" id= "delete">
+                                // <button type="submit" id="btn-inventory" name="delete-gallery">Eliminati din galerie</button></li>';
                             } elseif ($_SESSION['username'] != "admin") { /* action="../Includes/insert.php?action=add&id=' . $row['id'] . '" */
                                 echo '<form action="../Includes/insert.php?action=add&id=' . $row['id'] . '" method="POST" id= "insert">
                                 <button type="submit" id="btn-inventory" name="submit-inventory" >Adauga in colectie</button></form></li>';
