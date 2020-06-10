@@ -163,31 +163,32 @@ session_start();
                     }
                     mysqli_stmt_bind_param($stmt, "ii", $id_user, $id_moneda);
                     mysqli_stmt_execute($stmt);
-                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
-                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . ";";
-                    $stmt = mysqli_stmt_init($conn);
-                if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    echo 'SQL ERROR';
-                } else {
-                    mysqli_stmt_execute($stmt);
-                    $result = mysqli_stmt_get_result($stmt);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
+                    echo '<script>window.location="my_collection.php"</script';
+                //     $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                //     from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . ";";
+                //     $stmt = mysqli_stmt_init($conn);
+                // if (!mysqli_stmt_prepare($stmt, $sql)) {
+                //     echo 'SQL ERROR';
+                // } else {
+                //     mysqli_stmt_execute($stmt);
+                //     $result = mysqli_stmt_get_result($stmt);
+                //     while ($row = mysqli_fetch_assoc($result)) {
+                //         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
 
-                        <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
-                        <p>Title: ' . $row['title'] . '</p>
-                        <p>Value: ' . $row['value'] . '</p>
-                        <p>Country: ' . $row['country'] . '</p>
-                        <p>Created at: ' . $row['createdAt'] . '</p>
-                        <p style="display:none;" class="wrapword">Description: ' . $row['description'] . '</p>';
-                        if (isset($_SESSION['username'])) {
-                            if ($_SESSION['username'] != "admin") {
-                                echo '<form action="my_collection.php?action=remove&id=' . $row['iid'] . '" method="POST">
-                                <button type="submit" id="btn-inventory"  name="remove-inventory" style="">Elimina din colectie</button></form></li>';
-                            }
-                        }
-                    }
-                }
+                //         <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
+                //         <p>Title: ' . $row['title'] . '</p>
+                //         <p>Value: ' . $row['value'] . '</p>
+                //         <p>Country: ' . $row['country'] . '</p>
+                //         <p>Created at: ' . $row['createdAt'] . '</p>
+                //         <p style="display:none;" class="wrapword">Description: ' . $row['description'] . '</p>';
+                //         if (isset($_SESSION['username'])) {
+                //             if ($_SESSION['username'] != "admin") {
+                //                 echo '<form action="my_collection.php?action=remove&id=' . $row['iid'] . '" method="POST">
+                //                 <button type="submit" id="btn-inventory"  name="remove-inventory" style="">Elimina din colectie</button></form></li>';
+                //             }
+                //         }
+                //     }
+                // }
                 }
                 ?>
             </ul>
