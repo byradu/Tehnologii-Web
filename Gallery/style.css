@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://images.unsplash.com/photo-1539009139598-75df7c89734d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1929&q=80);
+    background-image: url("../background.jpg");
     background-size: cover;
     background-attachment: fixed;
     color: white;
@@ -33,7 +33,7 @@ ul {
 }
 
 li {
-    padding: 0.5em;
+    padding: 0.2em;
 
 }
 
@@ -67,9 +67,11 @@ img {
 .gallery-upload {
     position: fixed;
     top:0;
+    left:0;
     background: rgba(0, 0, 0, 0.8);
     padding-top: 0;
     margin: 0;    
+    width: 99vw;
 }
 
 .gallery-upload a{
@@ -119,12 +121,29 @@ input:-webkit-autofill {
     margin-bottom: 1em;
     transition: 0.4s;
 }
-.btn-inventory:hover{
+
+.sort-button{
+    background-color: #4CAF50;
+    border: 1px solid #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-left: 2vw;
+    font-size: 17px;
+}
+
+
+.btn-inventory:hover,
+.sort-button:hover{
     background-color: white;
     border:1px solid #4CAF50;
     color: #4CAF50;
 	transition: all 200ms ease;
 }
+
+
 
 
 .wrapword {
@@ -159,12 +178,17 @@ input:-webkit-autofill {
 
 .sortare{
     position: fixed;
-    top: 40vh;
+    top:0;
+    left:0;
     background: rgba(0, 0, 0, 0.8);
     display:flex;
-    flex-direction: column;
-    width: 10vw;
-    height: 20vh;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 99vw;
+    /* width: 10vw; */
+    /* height: 9vh; */
+    
 }
 
 header{
@@ -173,16 +197,12 @@ header{
 }
 
 .go-home {
-    display:inline;
-}
-
-.go-home a {
     text-decoration: none;
     font-size: 40px;
     color: greenyellow;
 }
 
-.go-home a:hover {
+.go-home:hover {
     color: rgba(0, 200, 0, 0.8);
 }
 
@@ -191,6 +211,11 @@ header{
     animation: rainbow 100s linear infinite forwards;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+form label{
+    font-size:120%;
 }
 
 @keyframes rainbow {
@@ -200,5 +225,37 @@ header{
 
     100% {
         background-position-x: 600vw;
+    }
+}
+
+@media all and (max-width:950px){
+
+    .go-home{
+        font-size: 25px;
+    }
+}
+
+
+@media all and (max-width:600px){
+
+    .sortare{
+        left:0;
+    }
+}
+
+@media all and (max-width:555px){
+    form {
+        margin-left: 20px;
+    }
+
+    .galerie{
+        margin-top: 15vh;
+        
+    }
+
+    .JOS{
+        margin-top: 20vh;
+        display:inline-block;
+        padding-top: 0;
     }
 }

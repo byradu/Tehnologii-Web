@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background-image: url(https://images.unsplash.com/photo-1539009139598-75df7c89734d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1929&q=80);
+    background-image: url("background.jpg");
     background-size: cover;
     background-attachment: fixed;
     position: relative;

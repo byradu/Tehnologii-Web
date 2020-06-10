@@ -46,13 +46,14 @@ session_start();
 
 <body>
     <header>
-        <div class="go-home">
-            <a href="../index.php">Home</a>
-        </div>
+
 
     </header>
     <main>
         <div class="sortare">
+        <?php if($_SESSION['username']!="admin")
+        echo ' 
+         <a href="../index.php" class="go-home">Home</a>'; ?>
             <form action="my_collection.php" method="POST">
                 <label for="tara-asc">Tara-ascendent</label>
                 <input type="checkbox" id="tara-asc" name="tara-asc" onclick="checkTara('tara-asc')">
@@ -66,12 +67,10 @@ session_start();
                 <input type="checkbox" id="value-asc" name="value-asc" onclick="checkValue('value-asc')">
                 <label for="value-desc">Valoare desc</label>
                 <input type="checkbox" id="value-desc" name="value-desc" onclick="checkValue('value-desc')">
-                <button type="submit" value="submit">Sorteaza</button>
+                <button type="submit" value="submit" class="sort-button">Sorteaza</button>
             </form>
         </div>
-        <div>
-
-
+        <div class="galerie">
             <ul>
                 <?php
                 include_once '../Includes/connection.inc.php';
@@ -139,9 +138,9 @@ session_start();
                         echo '<div style="font-size:1.5em;"><p style="color: #25f54f;letter-spacing:1px;" >Momentan colectia dumneavoastra nu contine nimic. <a href="gallery.php" style="text-decoration:none;color: #25f54f;" class="curcubeu">Apasati aici pentru a putea incepe sa va creati propria colectie!</a></p></div><style>.sortare{visibility:hidden;}</style>';
                     } else {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<li style="text-align:center;background:white; color:black;border:1px solid black;margin:0.5em;">
+                            echo '<li style="text-align:center;background:white; color:black;border:1px solid black;margin:0.4em; padding:0.1em;">
 
-                        <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
+                        <div style="background:white;"><img style="height:120px;width:120px;" src="images/' . $row["imgFullName"] . '"> <img style="height:120px;width:120px;"  src="images/' . $row["reversePic"] . '"></div>
                         <p>Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>

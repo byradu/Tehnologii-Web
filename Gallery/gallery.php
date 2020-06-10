@@ -51,20 +51,16 @@ session_start();
 
 <body>
     <header>
-    <?php
-        if($_SESSION['username']!="admin")
-        echo ' 
-        <div class="go-home">
-            <a href="../index.php">Home</a>
-        </div>';
-    ?>
+        <?php
+        
+        ?>
         <!-- <h2>Numismatic Artefact Explorer - Gallery</h2> -->
         <?php
         if (isset($_SESSION['username'])) {
             if ($_SESSION['username'] == "admin") {
                 echo '<div class="gallery-upload"> 
                 <form action="../Includes/gallery-upload.php" method="POST" enctype="multipart/form-data">
-                    <a href="../index.php">Home</a><br>
+                    <a href="../index.php" style="visibility:hidden;">Home</a><br>
                     <p>Introduceti o moneda noua: </p>    
                     <input required type="text" name="filetitle" placeholder="Titlul monedei">
                     <input required type="number" name="valoare" placeholder="Valoarea">
@@ -78,15 +74,26 @@ session_start();
                 
             </div>';
                 // echo'<h1>HAI ADMINE</h1>';\
-            } 
+            }
         } else {
-            echo '<p style="font-size:150%;color:white;">Creati-va cont pentru a va putea alcatui o colectie</p>';
+            echo '<div class="JOS"><p style="font-size:150%;color:greenyellow;margin-top:9vh;" class="p-curcubeu"><a href="../Login/login.php" style="text-decoration:none;color:white;" class="curcubeu">Creati-va cont </a>pentru a va putea alcatui o colectie.</p></div>';
         }
         ?>
 
     </header>
     <main style="background:white;">
         <div class="sortare">
+            <?php 
+            if (isset($_SESSION['username'])) {
+                if ($_SESSION['username'] != "admin")
+                    echo ' 
+         <a href="../index.php" class="go-home">Home</a>';
+            }
+            if (!isset($_SESSION['username'])) {
+                echo ' 
+                <a href="../index.php" class="go-home">Home</a>';
+            }
+            ?>
             <form action="gallery.php" method="POST">
                 <label for="tara-asc">Tara-ascendent</label>
                 <input type="checkbox" id="tara-asc" name="tara-asc" onclick="checkTara('tara-asc')">
@@ -100,10 +107,10 @@ session_start();
                 <input type="checkbox" id="value-asc" name="value-asc" onclick="checkValue('value-asc')">
                 <label for="value-desc">Valoare desc</label>
                 <input type="checkbox" id="value-desc" name="value-desc" onclick="checkValue('value-desc')">
-                <button type="submit" value="submit">Sorteaza</button>
+                <button type="submit" value="submit" class="sort-button">Sorteaza</button>
             </form>
         </div>
-        <div>
+        <div class="galerie">
             <ul>
                 <?php
                 include_once '../Includes/connection.inc.php';
@@ -169,40 +176,52 @@ session_start();
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
                         
-                        <p>' .$row['title'] .'</p>
-                        <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
+                        
+                        <div style="background:white;"><img style="height:120px;width:120px;" src="images/' . $row["imgFullName"] . '"> <img style="height:120px;width:120px;"  src="images/' . $row["reversePic"] . '"></div>
+                        <p>Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
                         <p>Created at: ' . $row['createdAt'] . '</p> 
                         <p class="wrapword">' . $row['description'] . '</p>';
                         if (isset($_SESSION['username'])) {
                             if ($_SESSION['username'] == "admin") {
+                                echo '<style>
+                                    .galerie{
+                                        margin-top:18vh;
+                                    }
+                                </style>';
                                 // echo '<form action="../Includes/delete.php?action=remove&id=' . $row['id'] . '" method="POST" id= "delete">
                                 // <button type="submit" id="btn-inventory" name="delete-gallery">Eliminati din galerie</button></li>';
                             } elseif ($_SESSION['username'] != "admin") { /* action="../Includes/insert.php?action=add&id=' . $row['id'] . '" */
+                                echo '<style>
+                                .galerie{
+                                    margin-top:10vh;
+                                }
+                            </style>';
                                 echo '<form method="POST" id= "insert">
-                                <button type="button" class="btn-inventory" name="submit-inventory" data-id="'.$row['id'].'" >Adauga in colectie</button></form></li>';
-
+                                <button type="button" class="btn-inventory" name="submit-inventory" data-id="' . $row['id'] . '" >Adauga in colectie</button></form></li>';
                             }
                         }
                     }
-                } 
+                }
                 ?>
-            <script>
-            $(document).ready(function(){
-              $(".btn-inventory").click(function(){
-                var coin_id = $(this).attr("data-id");
-                        $.ajax({
-                            url: "../Includes/insert.php",
-                            method: "post",
-                            data: {coin: coin_id},
-                            success: function(response){
-                                alert(response);
-                            }
+                <script>
+                    $(document).ready(function() {
+                        $(".btn-inventory").click(function() {
+                            var coin_id = $(this).attr("data-id");
+                            $.ajax({
+                                url: "../Includes/insert.php",
+                                method: "post",
+                                data: {
+                                    coin: coin_id
+                                },
+                                success: function(response) {
+                                    alert(response);
+                                }
+                            });
                         });
-                      });
-                 });
-       </script>
+                    });
+                </script>
             </ul>
         </div>
     </main>
