@@ -150,7 +150,7 @@ session_start();
                             if (isset($_SESSION['username'])) {
                                 if ($_SESSION['username'] != "admin") {
                                     echo '<form action="my_collection.php?action=remove&id=' . $row['iid'] . '" method="POST">
-                                <button type="submit" id="btn-inventory"  name="remove-inventory" style="">Elimina din colectie</button></form></li>';
+                                <button type="submit" class="btn-inventory"  name="remove-inventory" style="">Elimina din colectie</button></form></li>';
                                 }
                             }
                         }

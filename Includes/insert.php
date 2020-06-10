@@ -1,19 +1,16 @@
 <?php
 session_start();
 
-if (isset($_POST['submit-inventory'])) {
-    require 'connection.inc.php';
+    $id_user = $_SESSION['ID'];
+    $id_coin = $_POST['coin'];
 
-    if (isset($_GET['id'])) {
-        $id_moneda = $_GET['id'];
-        $id_user = $_SESSION['ID'];
-        $sql = "INSERT INTO inventory (id_user,id_coin) values(" . $id_user . "," . $id_moneda . ");";
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location:../Gallery/gallery.php?error=sqlerror");
-            exit();
-        }
-        mysqli_stmt_execute($stmt);
-        header("Location:../Gallery/gallery.php");
+    require 'connection.inc.php';
+    $sql = "INSERT INTO inventory (id_user,id_coin) values(" . $id_user . "," . $id_coin . ");";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+       echo 'Eroare de la baza de date!'. $id_coin;
+        exit();
     }
-}
+
+        mysqli_stmt_execute($stmt);
+        echo 'Moneda a fost adaugata!';

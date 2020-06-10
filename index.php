@@ -47,7 +47,7 @@ session_start();
                 <a href="rss.php">RSS Feed</a>
             </li>
             <li>
-                <a href="Chestii/scholarly.html">Scholarly Report</a>
+                <a href="Scholarly/scholarly.html">Scholarly Report</a>
             </li>
             <li>
                 <a href="https://github.com/byradu/Tehnologii-Web"><i class="fa fa-github"></i></a>

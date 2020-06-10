@@ -168,7 +168,7 @@ session_start();
                     $result = mysqli_stmt_get_result($stmt);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
-
+                        
                         <p>' .$row['title'] .'</p>
                         <div style="background:white;"><img src="images/' . $row["imgFullName"] . '"> <img src="images/' . $row["reversePic"] . '"></div>
                         <p>Value: ' . $row['value'] . '</p>
@@ -180,34 +180,32 @@ session_start();
                                 // echo '<form action="../Includes/delete.php?action=remove&id=' . $row['id'] . '" method="POST" id= "delete">
                                 // <button type="submit" id="btn-inventory" name="delete-gallery">Eliminati din galerie</button></li>';
                             } elseif ($_SESSION['username'] != "admin") { /* action="../Includes/insert.php?action=add&id=' . $row['id'] . '" */
-                                echo '<form action="../Includes/insert.php?action=add&id=' . $row['id'] . '" method="POST" id= "insert">
-                                <button type="submit" id="btn-inventory" name="submit-inventory" >Adauga in colectie</button></form></li>';
+                                echo '<form method="POST" id= "insert">
+                                <button type="button" class="btn-inventory" name="submit-inventory" data-id="'.$row['id'].'" >Adauga in colectie</button></form></li>';
 
                             }
                         }
                     }
                 } 
                 ?>
-            <!--     <script>
+            <script>
             $(document).ready(function(){
-              $("#btn-inventory").click(function(){
-                 var coin_id = "" ;
+              $(".btn-inventory").click(function(){
+                var coin_id = $(this).attr("data-id");
                         $.ajax({
                             url: "../Includes/insert.php",
                             method: "post",
-                            data: {id: coin_id},
+                            data: {coin: coin_id},
                             success: function(response){
-                                $("#result").html(response);
-                                //alert("Coin has been inserted");
+                                alert(response);
                             }
                         });
                       });
                  });
-       </script> -->
+       </script>
             </ul>
         </div>
     </main>
-       <p id="result" style="color:green;"></p>
 </body>
 
 </html>
