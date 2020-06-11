@@ -31,9 +31,7 @@ session_start();
             echo '<li>
                     <a href="Gallery/my_collection.php">My collection</a>
                 </li>
-                <li>
-                    <a href="user.php">My page</a>
-                </li>';
+                ';
         } else {
             echo '<li>
                     <a href="Login/login.php">Login</a>

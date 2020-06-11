@@ -214,7 +214,7 @@ header{
     background-clip: text;
 }
 
-form label{
+.form label{
     font-size:120%;
 }
 
@@ -244,7 +244,7 @@ form label{
 }
 
 @media all and (max-width:555px){
-    form {
+    .form {
         margin-left: 20px;
     }
 
