@@ -59,7 +59,7 @@
                     }else if($_GET['error']=="emailtaken"){
                         echo '<p>Acest email este deja utilizat</p>';
                     }else if($_GET['error']=="usertaken"){
-                        echo 'Acest username este deja utilizat</p>';
+                        echo '<p>Acest username este deja utilizat</p>';
                     }
                 }else if(isset($_GET['signup'])){
                     if($_GET['signup']=="success"){

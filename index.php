@@ -53,6 +53,9 @@ session_start();
                 <a href="Scholarly/">Scholarly Report</a>
             </li>
             <li>
+                <a href="Statistics/statistics.php">Statistics</a>
+            </li>
+            <li>
                 <a href="https://github.com/byradu/Tehnologii-Web"><i class="fa fa-github"></i></a>
             </li>
             <?php
