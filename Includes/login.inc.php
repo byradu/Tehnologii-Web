@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
                     session_start(); //mergi pe index si inainte de toate incepi o sesiune ca sa putem verifica
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['ID'] = $row['id'];
+                    $_SESSION['email']=$row['email'];
                     header("Location:../Login/login.php?login=succes");
                     header("Location:../index.php");
                     // include('');

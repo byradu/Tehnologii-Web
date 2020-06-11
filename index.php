@@ -30,6 +30,9 @@ session_start();
             if($_SESSION['username']!="admin")
             echo '<li>
                     <a href="Gallery/my_collection.php">My collection</a>
+                </li>
+                <li>
+                    <a href="user.php">My page</a>
                 </li>';
         } else {
             echo '<li>
