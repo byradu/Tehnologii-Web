@@ -53,11 +53,13 @@
                     }else if($_GET['error']=="invalidusername"){
                         echo '<p>Username invalid</p>';
                     }else if($_GET['error']=="passwordsdontmatch"){
-                        echo 'Parolele nu sunt identice';
+                        echo '<p>Parolele nu sunt identice';
                     }else if($_GET['error']=="sqlerror1"){
-                        echo 'Eroare la procesarea inregistrarii</p>';
+                        echo '<p>Eroare la procesarea inregistrarii</p>';
                     }else if($_GET['error']=="emailtaken"){
-                        echo 'Acest email este deja utilizat</p>';
+                        echo '<p>Acest email este deja utilizat</p>';
+                    }else if($_GET['error']=="usertaken"){
+                        echo 'Acest username este deja utilizat</p>';
                     }
                 }else if(isset($_GET['signup'])){
                     if($_GET['signup']=="success"){

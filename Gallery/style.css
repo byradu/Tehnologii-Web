@@ -259,3 +259,26 @@ form label{
         padding-top: 0;
     }
 }
+
+@media all and (max-width:970px){
+    .gallery-upload{
+        margin-top: 10vh;
+    }
+}
+
+@media all and (max-width:675px){
+    .gallery-upload p{
+        margin-top: 14vh;
+    }
+
+    .gallery-upload{
+        display: flex;
+    }
+
+    .gallery-upload input,
+    .gallery-upload label{
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+}

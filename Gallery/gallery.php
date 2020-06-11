@@ -67,9 +67,9 @@ session_start();
                     <input required type="text" name="tara" placeholder="Tara">
                     <input required type="date" name="createdAt" placeholder="Perioada de emisie">
                     <input required type="text" name="descriere" placeholder="Descriere">
-                    <label for="file">Incarcati o poza</label>
-                    <input required type="file" id="file" name="file" placeholder="file" hidden>
-                    <button type="submit" name="submit">Adauga in colectie</button>
+                    <label for="file" class="sort-button">Incarcati cele 2 fotografii</label>
+                    <input required type="file" id="file" name="file[]" multiple placeholder="file" hidden>
+                    <button type="submit" name="submit" class="sort-button" style="margin-left:2px;">Adauga in colectie</button>
                 </form>
                 
             </div>';
