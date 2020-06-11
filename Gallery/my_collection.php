@@ -77,55 +77,72 @@ session_start();
                 $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
                 from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . ";";
                 if (isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by INVENTORY.id DESC";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by INVENTORY.id DESC";
                 }
                 if (isset($_POST['ord-ASC'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by INVENTORY.id ASC";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by INVENTORY.id ASC";
                 }
                 if (isset($_POST['tara-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC";
                 }
                 if (isset($_POST['tara-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country ASC";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.country ASC";
                 }
                 if (isset($_POST['tara-asc']) && isset($_POST['ord-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country asc, COINS.id asc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.country asc, COINS.id asc";
                 }
                 if (isset($_POST['tara-asc']) && isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country asc, COINS.id desc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.country asc, COINS.id desc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC, COINS.ID asc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC, COINS.ID asc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC, COINS.id desc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.country DESC, COINS.id desc";
                 }
                 if (isset($_POST['value-desc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.value DESC";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.value DESC";
                 }
                 if (isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.value ASC";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.value ASC";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS join inventory on COINS.id=INVENTORY.id_coin where INVENTORY.id_user=" . $_SESSION['ID'] . " order by COINS.value ASC";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] . " order by COINS.value ASC";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-desc'])) {
-                    $sql = "SELECT * FROM COINS order by country,id desc, value desc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] ." order by country,id desc, value desc";
                 }
                 if (isset($_POST['tara-asc']) && isset($_POST['ord-desc']) && isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country asc,id desc, value asc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] ." order by country asc,id desc, value asc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country,id desc, value asc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] ." order by country,id desc, value asc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-asc']) && isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country,id asc, value asc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] ." order by country,id asc, value asc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-desc']) && isset($_POST['value-desc'])) {
-                    $sql = "SELECT * FROM COINS order by country,id desc, value desc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] ." order by country,id desc, value desc";
                 }
                 if (isset($_POST['tara-desc']) && isset($_POST['ord-asc']) && isset($_POST['value-asc'])) {
-                    $sql = "SELECT * FROM COINS order by country,id asc, value asc";
+                    $sql = "select inventory.id as iid,coins.id as cid,title,value,country,createdAt,description,imgFullName,reversePic
+                    from inventory,coins where inventory.id_coin=coins.id and inventory.id_user=" . $_SESSION['ID'] ." order by country,id asc, value asc";
                 }
 
                 $stmt = mysqli_stmt_init($conn);
@@ -138,17 +155,17 @@ session_start();
                         echo '<div style="font-size:1.5em;"><p style="color: #25f54f;letter-spacing:1px;" >Momentan colectia dumneavoastra nu contine nimic. <a href="gallery.php" style="text-decoration:none;color: #25f54f;" class="curcubeu">Apasati aici pentru a putea incepe sa va creati propria colectie!</a></p></div><style>.sortare{visibility:hidden;}</style>';
                     } else {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<li style="text-align:center;background:white; color:black;border:1px solid black;margin:0.4em; padding:0.1em;">
+                            echo '<li style="text-align:center;background:white; color:black;border:1px solid black;margin:0.4em; padding:0.1em;max-width:400px;">
 
                         <div style="background:white;"><img style="height:120px;width:120px;" src="images/' . $row["imgFullName"] . '"> <img style="height:120px;width:120px;"  src="images/' . $row["reversePic"] . '"></div>
-                        <p>Title: ' . $row['title'] . '</p>
+                        <p style="max-width:300px;">Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
                         <p>Created at: ' . $row['createdAt'] . '</p>
-                        <p style="display:none;" class="wrapword">Description: ' . $row['description'] . '</p>';
+                        <p style="max-width:300px;">Description: ' . $row['description'] . '</p>';
                             if (isset($_SESSION['username'])) {
                                 if ($_SESSION['username'] != "admin") {
-                                    echo '<form action="my_collection.php?action=remove&id=' . $row['iid'] . '" method="POST">
+                                    echo '<form action="my_collection.php?action=remove&id=' . $row['cid'] . '" method="POST">
                                 <button type="submit" class="btn-inventory"  name="remove-inventory" style="">Elimina din colectie</button></form></li>';
                                 }
                             }
@@ -158,7 +175,7 @@ session_start();
                 if (isset($_GET['id'])) {
                     $id_moneda = $_GET['id'];
                     $id_user = $_SESSION['ID'];
-                    $sql = "DELETE FROM inventory where id_user=? and id=?";
+                    $sql = "DELETE FROM inventory where id_user=? and id_coin=?";
                     $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
                         header("Location:my_collection.php?error=sqlerror");

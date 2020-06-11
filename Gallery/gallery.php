@@ -63,7 +63,7 @@ session_start();
                     <a href="../index.php" style="visibility:hidden;">Home</a><br>
                     <p>Introduceti o moneda noua: </p>    
                     <input required type="text" name="filetitle" placeholder="Titlul monedei">
-                    <input required type="number" name="valoare" placeholder="Valoarea">
+                    <input required type="text" name="valoare" placeholder="Valoarea">
                     <input required type="text" name="tara" placeholder="Tara">
                     <input required type="date" name="createdAt" placeholder="Perioada de emisie">
                     <input required type="text" name="descriere" placeholder="Descriere">
@@ -174,15 +174,15 @@ session_start();
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;">
+                        echo '<li style="text-align:center;background:rgba(255,255,255,0.4); color:black;border:1px solid black;margin:0.5em;max-width:400px;">
                         
                         
                         <div style="background:white;"><img style="height:120px;width:120px;" src="images/' . $row["imgFullName"] . '"> <img style="height:120px;width:120px;"  src="images/' . $row["reversePic"] . '"></div>
-                        <p>Title: ' . $row['title'] . '</p>
+                        <p style="max-width:300px;">Title: ' . $row['title'] . '</p>
                         <p>Value: ' . $row['value'] . '</p>
                         <p>Country: ' . $row['country'] . '</p>
                         <p>Created at: ' . $row['createdAt'] . '</p> 
-                        <p class="wrapword">' . $row['description'] . '</p>';
+                        <p style="max-width:300px;">Description: ' . $row['description'] . '</p>';
                         if (isset($_SESSION['username'])) {
                             if ($_SESSION['username'] == "admin") {
                                 echo '<style>

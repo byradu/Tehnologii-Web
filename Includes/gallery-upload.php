@@ -30,7 +30,7 @@
                 if($fileSize<2000000){
                     // generez id unic ca sa nu fie mai multe imagini cu acelasi path
                     $imageFullName=$title . "." .uniqid("",true) . "." . $fileActualExt;
-                    $fileDestination="../Gallery/gallery/" .$imageFullName;
+                    $fileDestination="../Gallery/images/" .$imageFullName;
                     include_once "connection.inc.php";
                     if(empty($title) || empty($descriere)){
                         header("Location:../Gallery/gallery.php?upload=empty");

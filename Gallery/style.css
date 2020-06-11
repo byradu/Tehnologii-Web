@@ -146,7 +146,7 @@ input:-webkit-autofill {
 
 
 
-.wrapword {
+/* .wrapword {
     padding: 0.5em;
     white-space: -moz-pre-wrap !important;  
     white-space: -pre-wrap;      
@@ -156,7 +156,7 @@ input:-webkit-autofill {
     white-space: -webkit-pre-wrap; 
     word-break: break-all;
     white-space: normal;
-}
+} */
 
 
 ::placeholder {
