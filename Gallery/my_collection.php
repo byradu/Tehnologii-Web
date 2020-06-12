@@ -172,7 +172,6 @@ session_start();
     }
     // ajax call on page load
     window.addEventListener('load', (event) => {
-        
         ajax_post();
 }); 
 </script>

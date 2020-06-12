@@ -14,7 +14,7 @@ session_start();
     <title>Numismatic Artefact Explorer</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="logo.jpg">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
     <style>
         /* .log-in{
             display:inline;
@@ -57,7 +57,7 @@ session_start();
                 <a href="Statistics/statistics.php">Statistics</a>
             </li>
             <li>
-                <a href="https://github.com/byradu/Tehnologii-Web"><i class="fa fa-github"></i></a>
+                <a href="https://github.com/byradu/Tehnologii-Web">Github Project</a>
             </li>
             <?php
             if (isset($_SESSION['username'])) {

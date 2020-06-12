@@ -9,8 +9,9 @@
   <meta name="description" content="Here you can see a few statistics about our users inventories and our coins collections.">
   <title>Statistics</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <link rel="icon" type="image/png" href="../logo.jpg">
+
   
   <script type="text/javascript">
     google.charts.load('current', {
@@ -200,7 +201,7 @@
         <div id="piechart" class="pie"></div>
         <div class="csv">
           <form action="../Includes/download_csvi.php" method="POST">
-          <button type="submit" name="csv-top5i" id="csv-top5i" > Download CSV Top 5 Inventories</button>
+          <button type="submit" name="csv-top5i" id="csv-top5i" class="csv-top5i" > Download CSV Top 5 Inventories</button>
           </form>
           
         </div>

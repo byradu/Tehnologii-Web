@@ -9,6 +9,8 @@
     <meta name="description" content="Login for more!">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="../logo.jpg">
+
 </head>
 
 <body>
