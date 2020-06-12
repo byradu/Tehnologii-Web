@@ -155,6 +155,8 @@ session_start();
         }
         hr.open("POST", url, true);
         hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
+        
         hr.onreadystatechange = function() {
             if (hr.readyState == 4 && hr.status == 200) {
                 var return_data = hr.responseText;
@@ -166,8 +168,13 @@ session_start();
         } else if (ok == 1) {
             hr.send(conditii);
         }
-        document.getElementById("raspuns-colectie").innerHTML = "asteptam....";
+        document.getElementById("raspuns-colectie").innerHTML = '<p style="font-size:200%;">Incarcam colectia😁...</p>';
     }
+    // ajax call on page load
+    window.addEventListener('load', (event) => {
+        
+        ajax_post();
+}); 
 </script>
 
 <body>
@@ -213,7 +220,7 @@ session_start();
         if (isset($_GET['id'])) {
             $id_moneda = $_GET['id'];
             $id_user = $_SESSION['ID'];
-            $sql = "DELETE FROM inventory where id_user=? and id_coin=?";
+            $sql = "DELETE FROM inventory where id_user=? and id=?";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("Location:my_collection.php?error=sqlerror");
