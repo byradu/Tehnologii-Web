@@ -7,13 +7,16 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Coins,Collections">
+    <meta name="author" content="Loghin Alexandru-Stelian & Zaharioaei Radu">
+    <meta name="description" content="Here you can see our collection of coins and can create one for yourself!">
     <title>Numismatic Artefact Explorer</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="..\logo.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    
 
 </head>
 
@@ -199,28 +202,31 @@ session_start();
                                 }
                             </style>';
                                 echo '<form method="POST" id= "insert">
-                                <button type="button" class="btn-inventory" name="submit-inventory" data-id="' . $row['id'] . '" >Adauga in colectie</button></form></li>';
+                                <button type="button" class="btn-inventory"  name="submit-inventory" data-id="' . $row['id'] . '" 
+                                onclick="insert_post('.$row['id'].')">Adauga in colectie</button></form></li>';
                             }
                         }
                     }
                 }
                 ?>
-                <script>
-                    $(document).ready(function() {
-                        $(".btn-inventory").click(function() {
-                            var coin_id = $(this).attr("data-id");
-                            $.ajax({
-                                url: "../Includes/insert.php",
-                                method: "post",
-                                data: {
-                                    coin: coin_id
-                                },
-                                success: function(response) {
-                                    alert(response);
-                                }
-                            });
-                        });
-                    });
+                <script type="text/javascript">
+                function insert_post(coin_id){
+                    
+                    var hr = new XMLHttpRequest();
+                    var param = "coin="+coin_id;
+                    var url = "../Includes/insert.php";
+                    hr.open("POST", url, true);
+                    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    hr.onreadystatechange = function() {
+                    if (hr.readyState == 4 && hr.status == 200) {
+                        var return_data = hr.responseText;
+                        alert(return_data);
+                        }
+                    }
+                    hr.send(param);
+
+                }
+                    
                 </script>
             </ul>
         </div>

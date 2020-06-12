@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="keywords" content="Details,Evolution">
+    <meta name="author" content="Loghin Alexandru-Stelian & Zaharioaei Radu">
+     <meta name="description" content="Info about our project.">
     <title>Scholarly HTML</title>
     <link rel="stylesheet" href="css/scholarly.min.css">
     <script src="js/scholarly.min.js"></script>
@@ -72,7 +75,7 @@
           </ol>
         </p>
     </section>
-    <section id="structure">
+    <section id="evolution">
       <!-- review? -->
       <h2>Etapele dezvoltarii</h2>
       <ol>
@@ -97,7 +100,7 @@
       </ol>
      
     </section>
-    <section id="semantics">
+    <section id="detalied evolution">
       <!-- review? -->
       <h2>Descriere detaliata asupra dezvoltarii</h2>
       <ol> 
@@ -136,63 +139,101 @@
         <li>
           <p>Modulul de administrare</p>
           Administratorii paginii pot sa modifice galeria expusa, adaugand monede noi, furnizand datele necesare
-            pentru a putea fi introduse in baza de date. TRE SA SCRIEM MAI MULT AICI CRED.
+          pentru a putea fi introduse in baza de date. <br>
+          Acest modul este eficient pentru adaugarea noilor monede de catre administratorii site-ului. Din punct de vedere al complexitatii, clientul trebuie sa aiba o interfata prietoanasa in care poate efectua aceasta operatiune.
         </li>
         <li>
           <p>Realizarea fluxului RSS</p>
           Un flux RSS este o modalitate prin care se usureaza prezentarea unor date unui utilizator. Mai exact,
-            utilizatorul citind acest flux, poate afla noutati legate despre diferite subiecte. In cadrul acestui
-            proiect, rolul fluxului RSS este de a informa utilizatorii in legatura cu popularitatea monedelor in ordine
-            descendenta. XML-ul este unul dinamic adica mereu se updateaza daca are loc vreo schimbare in topul celor 10
-            monede populare, preluand date din BD.
+          utilizatorul citind acest flux, poate afla noutati legate despre diferite subiecte. In cadrul acestui
+          proiect, rolul fluxului RSS este de a informa utilizatorii in legatura cu popularitatea monedelor in ordine
+          descendenta. XML-ul este unul dinamic adica mereu se updateaza daca are loc vreo schimbare in topul celor 10
+          monede populare, preluand date din BD.
         </li>
-
+        <li>
+          <p>Realizarea statisticilor</p>
+          Realizarea statisticilor a fost realizata in partea finala a implementarii proiectului. De ce am optat sa le implementam la final? 
+          Simplu: aveam nevoie de datele userilor inregistrati (username-uri, respectiv inventare) pentru a forma niste statistici cat de cat pertinente.<br>
+          Chart-urile au fost realizate prin API celor de la Google (Google Charts). Am recurs la acesta pentru a face pagina prezentata mai user-friendly cu utilizatorii.
+          Clasicele tabele puteau fi si ele implementate , dar e mai placut ochiului un PieChart.<br>
+          Pentru fiecare grafic realizat am pus la dispozitia utilizatorului si un fisier CSV care poate fi descarcat tot de pe pagina respectiva.
+        </li>
+        <li>
+          <p>UML</p>
+          Diagrama proiectului este prezenta in fisierele proiectului.
+        </li>
+        
       </ol>
       </section>
       <section id="actions">
         <!-- review? -->
-        <h3>Comming soon</h3>
-      
-     
-      </section>
-      <section id="article-title-semantics">
-        <!-- review? -->
-       
-      </section>
-      <section id="contentinfo-semantics">
-       
-        <section id="authors">
-          <!-- review? -->
-         
-        </section>
-        <section id="affiliations">
+        <h3>Manual de utilizare</h3>
         
-        </section>
-        <section id="abstract-etc">
-          <!-- review? -->
-          <h4>License, Copyright, Keywords, and Abstract</h4>
-          <p>
-            The copyright line of the document can be included in any element, but it must list two
-            properties. <a>schema:copyrightYear</a> has a numeric value, and
-            <a>schema:copyrightHolder</a> has a value of <a>schema:Person</a> or
-            <a>schema:Organization</a>.
-          </p>
-          <p>
-            A link to the license for the article should be provided. The link should have the
-            property of <a>schema:license</a> and <code>typeof="CreativeWork"</code>.
-          </p>
-          <!-- XXX insert simple license example to CC?-->
-          <p>
-            Keywords should be listed in a <code>section</code> element with an appropriate
-            <code>h2</code>. The list of terms should be a <code>ul</code> with the
-            <code>property</code> of <a>schema:keywords</a> on every <code>li</code>.
-          </p>
-          <p>
-            The abstract should be included in a <code>section</code> element with
-            <code>typeof</code> attribute containing <code>sa:Abstract</code>. The abstract should
-            have the role of <code>doc-abstract</code>.
-          </p>
-        </section>
+        Manualul de utilizare al website-ului este prezent in acest document pentru a usura accesul user-ului.
+
+        <ol>
+          <li>
+            <p>Introducere</p>
+            Acest site este creat pentru utilizatorii de pe intreaga planeta. <br>
+            Care este scopul site-ului ? <br>
+            Acesta are rolul de a crea utilizatorilor sai o colectie de monede personala pentru a avea o evidenta asupra acestora.
+          </li>
+          <li>
+            <p>Interfata</p>
+            Interfata site-ului web este una responsive, site-ul putand vizualizat pe orice fel de dispozitiv. Este o interfata construita de la 0, din idei propii, oferind un aspect placut tuturor utilizatorilor.
+            Schema de culori este un simplista, placuta ochiului, pe placul fiecarei categorii de varsta.
+            <p>Pagina de bun venit</p>
+            Utilizatorul este intampinat cu un mesaj de bun venit, acesta avand in partea de sus cateva butoane care il redirectioneaza catre paginile specifice.
+            <p>Register</p>
+            Aceasta pagina contine un formular in care user-ul va fi neoviet sa completeze diferite date pentru a se inregistra pe site-ul nostru si pentru a avea diferite facilitati.
+            Pagina este accesibila din Index si din Galerie.
+            <p>Login</p>
+            Butonul de login este accesibil utilizatorului de la bun inceput. Daca acesta este un utilizator nou, abia inregistrat, acestuia ii va aparea optiunea de login direct in pagina de inregistrare.
+            <p>Gallery</p>
+            In galerie user-ul va putea vizualiza monedele prezente in baza de date si le va putea sorta dupa anumite critenii (sortarea dupa: tara ascendent/descendent,valoare ascendent/descendent, ordine ascendent/descendent sau multicliteriala).
+            <p>Statistics</p>
+            In aceasta pagina user-ul va fi intampinat de diferite chart-uri, cum ar fi cele mai mari inventari, cele mai populare monede sau cele mai grele monede.<br>
+            De asemenea user-ul poate descarca chart-urile respective in format CSV.
+            <p>Scholarly & Manual</p>
+            Aici gasiti acest document in care sunt prezentate diferite detalii de implementare, evolutia proiectului si acest manual de utilizare.
+            <p>Github</p>
+            Acest buton va redirectioneaza catre repository-ul acestui proiect, dar din motive de securitate am renuntat ca proiectul sa fie public.
+          </li>
+          <li>
+            <p>Register</p>
+            Cum am precizat anterior, utilizatorul este obligat sa introduca date valide pentru a se inregistra in data noastra de baze. <br>
+            Daca acesta introduce un camp invalid cum ar fi username folosit, email folosit sau daca  parolele nu se potrivest sau  daca campurile sunt goale i se va afisa un mesaj specific dupa trimiterea formularului.
+            Daca inregistrarea are succes, acesta se va putea intoarce in Index sau se va putea loga.
+          </li>
+          <li>
+            <p>Login</p>
+            Utilizatorul este intampinat cu un formular in care acesta va trebui sa completeze emal-ul sau username-ul dupa preferita si parola contului.<br>
+            Orice eroare va fi semnalata utilizatorului dupa trimiterea formularului. Dupa logare vor fi disponibile comanda de adaugare/stergere in inventar a unei monede si vizualizarea colectiei.
+          </li>
+          <li>
+            <p>Gallery</p>
+            Conform celor mentionate anterior in galerie va fi prezenta optiunea de adaugare a monedelor. Aceasta optiune este disponibila doar celor logati pe site. Ramane valabila sortarea banutilor dupa criteriile mentionate.<br>
+            Administratorii site-ului pot adauga noi monede in galerie prin completarea formularea si trimiterea acestuia.
+          </li>
+          <li>
+            <p>My Collection</p>
+            Fiind logat utilizatorul are acces la o pagina noua, my collection. Aici acesta is poate vizualiza si sorta inventarul dupa bunul plac.<br>
+            De asemenea daca user-ul considera ca numai detine o moneda pe care o are acesta o poate elimina prin apasarea unui buton.
+          </li>
+          <li>
+            <p>Statistics</p>
+            Pe aceasta pagina sunt prezente diferite statistici care pot fi vizualizate de catre oricine(vizitator/utilizator). De asemenea se pot descarca in format CSV datele prezentate in PieChart-uri.
+          </li>
+          <li>
+            <p>RSS Feed</p>
+            Acesta reprezinta o statistica a celor mai prezente monede in inventarul tuturor utilizatorilor, singura diferenta constand in faptul ca datele sunt in format <code>XML</code>.
+          </li>
+          <li>
+            <p>Github</p>
+            Dupa cum am mai precizat, butonul cu logo-ul Github, o sa directioneze catre repository-ul proiectului, dar din motive de siguranta am decis sa-l facem privat.
+          </li>
+        </ol> 
+      
  
         <section id="references">
           <h4>Webografie & Bibliografie</h4>
@@ -221,7 +262,32 @@
                 </cite>
             </dd>
             </li>
+            <li>
+              <dt id="ref-PHP">PHP Manual</dt>
+              <dd property="schema:citation" typeof="schema:Webpage" resource="https://www.php.net/manual/ro/">
+                <cite property="schema:name">
+                    <a href="https://www.php.net/manual/ro/">Manual utilizare PHP</a>
+                </cite>
+            </dd>
+            </li>
+            <li>
+              <dt id="ref-AJAX">PHP Manual</dt>
+              <dd property="schema:citation" typeof="schema:Webpage" resource="https://api.jquery.com/jquery.ajax/">
+                <cite property="schema:name">
+                    <a href="https://api.jquery.com/jquery.ajax/">Manual utilizare AJAX</a>
+                </cite>
+            </dd>
+            </li>
+            <li>
+              <dt id="ref-Scholarly">Scholarly Template</dt>
+              <dd property="schema:citation" typeof="schema:Webpage" resource="https://w3c.github.io/scholarly-html/">
+                <cite property="schema:name">
+                    <a href="https://w3c.github.io/scholarly-html/">Github Repository</a>
+                </cite>
+            </dd>
+            </li>
           </ol>
+          
         </section>
   </body>
 </html>

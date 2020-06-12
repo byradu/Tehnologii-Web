@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <meta name="keywords" content="Register on NUMAX">
+    <meta name="author" content="Loghin Alexandru-Stelian & Zaharioaei Radu">
+    <meta name="description" content="Register for more!">
+    <title>Register</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 

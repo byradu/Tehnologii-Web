@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Coins, Coins Collection, Statistics about coins">
+  <meta name="author" content="Loghin Alexandru-Stelian & Zaharioaei Radu">
+  <meta name="description" content="Here you can see a few statistics about our users inventories and our coins collections.">
   <title>Statistics</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -147,32 +150,43 @@
       
     }
   </script>
-  
-  <script>
-    $(document).ready(function() {
-      $("button").click(function() {
-        var src = $(this).attr("id");
-        $.ajax({
-          url: "../Includes/download_csv.php",
-          method: "post",
-          data: {
-            src: src
-          },
-          success: function(response) {
-            var link = document.createElement("a");
-            link.href = 'data:text/csv,' + encodeURIComponent(response);
-            if(src=="csv-top5i")
-              link.download = "Top 5 Inventories.csv"
-            if(src=="csv-top5c")
-              link.download = "Top 5 coins in inventories.csv"
-            if(src=="csv-top5h")
-              link.download = "Top 5 heaviest coins.csv"
-            link.click();
+ <!--  <script type="text/javascript">
+    function exp(type){
+      
+      var hr = new XMLHttpRequest();
+      
+      if(type=="csv-top5i")
+        var url = "../Includes/download_csvi.php";
+      if(type=="csv-top5c")
+        var url = "../Includes/download_csvc.php";
+      if(type=="csv-top5h")
+        var url = "../Includes/download_csv.php";
+      hr.open("POST",url,true) ;
+      hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      if(hr.readyState == 4 && hr.status == 200) {
+          var return_data = hr.responseText;
+          
+          if(type=="csv-top5i")
+            downloadAsFile(return_data,"Top 5 inventories");
+          if(type=="csv-top5c")
+            downloadAsFile(return_data,"Top 5 coins in inventories.csv");
+          if(type=="csv-top5h")
+            downloadAsFile(return_data,"Top 5 heaviest coins.csv");
           }
-        });
-      });
-    });
-  </script>
+      hr.send(null);
+      }
+      function downloadAsFile(csv, fileName) {
+      var file = new File([csv], fileName, { type: "text/csv" })
+      var anUrl = window.URL.createObjectURL(file)
+      var a = window.document.createElement('a');
+      a.href = window.URL.createObjectURL(file)
+      a.download = fileName;
+      a.click();
+  }
+    
+  </script> -->
+  
+
 
 </head>
 
@@ -185,19 +199,26 @@
       <li>
         <div id="piechart" class="pie"></div>
         <div class="csv">
-          <button id="csv-top5i">Download CSV Top 5 Inventories</button>
+          <form action="../Includes/download_csvi.php" method="POST">
+          <button type="submit" name="csv-top5i" id="csv-top5i" > Download CSV Top 5 Inventories</button>
+          </form>
+          
         </div>
       </li>
       <li>
         <div id="piechart2" class="pie"></div>
         <div class="csv">
-          <button id="csv-top5c">Download CSV Top 5 Coins in inventories</button>
+        <form action="../Includes/download_csvc.php" method="POST">
+          <button type="submit" id="csv-top5c" ">Download CSV Top 5 Coins in inventories</button>
+        </form>
         </div>
       </li>
       <li>
         <div id="piechart3" class="pie"></div>
         <div class="csv">
-          <button id="csv-top5h">Download CSV Top 5 heaviest coins</button>
+        <form action="../Includes/download_csv.php" method="POST">
+          <button id="csv-top5h" ">Download CSV Top 5 heaviest coins</button> <!-- onclick="exp(this.id) -->
+        </form>
         </div>
       </li>
     </ul>

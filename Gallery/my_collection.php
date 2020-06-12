@@ -7,6 +7,9 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Coins, Collection">
+    <meta name="author" content="Loghin Alexandru-Stelian & Zaharioaei Radu">
+    <meta name="description" content="Check your own inventory of coin!">
     <title>Numismatic Artefact Explorer</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="..\logo.jpg">
